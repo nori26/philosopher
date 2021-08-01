@@ -4,7 +4,7 @@ CFLAGS	= -Wall -Werror -Wextra -MMD -MP
 SRCDIR	= ./srcs
 OBJDIR	= ./srcs/obj
 SRCS	=\
-	./srcs/test.c
+	./srcs/test.c\
 
 OBJS	= $(shell echo $(SRCS:.c=.o) | awk -v s=$(SRCDIR) -v o=$(OBJDIR) '{sub(s, o); print $0}')
 DEPENDS	= $(shell echo $(SRCS:.c=.d) | awk -v s=$(SRCDIR) -v o=$(OBJDIR) '{sub(s, o); print $0}')
@@ -15,7 +15,6 @@ $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME)	: $(OBJS)
-	echo $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 add		:
@@ -29,5 +28,7 @@ fclean	:
 	$(RM) $(NAME) $(OBJS) $(DEPENDS)
 
 re		: fclean all
+
+-include $(DEPENDS)
 
 .PHONY	: all clean fclean re add bonus
