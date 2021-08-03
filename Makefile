@@ -37,7 +37,7 @@ add		:
 	bash make.sh $(SRCDIR) SRCS
 
 norm	:
-	@[ -z "$(shell norminette | grep -v ': OK!' | tee /dev/stderr)" ] &&\
+	@norminette | grep -v ': OK!' || \
 	printf '\x1b[1m\x1b[32m%s\x1b[39m\x1b[0m\n' 'Norm: OK!';
 
 .PHONY	: all clean fclean re bonus add norm
