@@ -9,7 +9,6 @@
 /*   Updated: 2021/08/03 06:45:36 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PHILO_H
 # define PHILO_H
 # include <stdint.h>
@@ -24,7 +23,7 @@ typedef struct s_phi
 	int	times;
 }t_phi;
 
-int	validate_args(int argc, char **argv, t_phi *philo);
 int	ft_atoi_err(char *s, int *i);
+int	validate_args(int argc, char **argv, t_phi *philo);
 
 #endif

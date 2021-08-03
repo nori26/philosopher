@@ -1,28 +1,32 @@
-NAME		= philo
-SHELL		= /bin/bash
-CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -MMD -MP
-SRCDIR		= ./srcs
-OBJDIR		= ./srcs/obj
-INCLUDES	= ./includes
-SRCS		=\
-	./srcs/test.c\
+NAME	= philo
+SHELL	= /bin/bash
+CC		= gcc
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP
+SRCDIR	= ./srcs
+LIBDIR	= ./srcs/libphilo
+OBJDIR	= ./obj
+INCLUDE	= ./includes
+VPATH	= $(SRCDIR):$(LIBDIR)
+SRCS	=\
+	./srcs/libphilo/ft_atoi_err.c\
+	./srcs/philo.c\
 
-# OBJS	= $(shell echo $(SRCS:.c=.o) | awk -v s=$(SRCDIR) -v o=$(OBJDIR) '{sub(s, o); print $0}')
-#DEPENDS	= $(shell echo $(SRCS:.c=.d) | awk -v s=$(SRCDIR) -v o=$(OBJDIR) '{sub(s, o); print $0}')
-OBJS		= $(OBJDIR)/$(shell basename -a $(SRCS:.c=.o))
-DEPENDS		= $(OBJDIR)/$(shell basename -a $(SRCS:.c=.d))
+OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+DEPENDS	= $(shell basename -a  $(SRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 
 all		: $(NAME)
 
 -include $(DEPENDS)
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJDIR)/%.o : %.c
 	@if [ ! -d $(OBJDIR) ];then mkdir $(OBJDIR); fi
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@ 
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+
+test:
+	echo $(OBJS)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -o $@
 
 clean	:
 	$(RM) $(OBJS) $(B_OBJS) $(DEPENDS)
@@ -33,7 +37,7 @@ fclean	:
 re		: fclean all
 
 add		:
-	bash header.sh $(SRCDIR) $(INCLUDES)/philo.h
+	bash header.sh $(SRCDIR) $(INCLUDE)/philo.h
 	bash make.sh $(SRCDIR) SRCS
 
 norm	:
