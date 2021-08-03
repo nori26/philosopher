@@ -3,13 +3,13 @@ SHELL	= /bin/bash
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra -MMD -MP
 SRCDIR	= ./srcs
-LIBDIR	= ./srcs/libphilo
+LIBDIR	= ./libph
 OBJDIR	= ./obj
 INCLUDE	= ./includes
 VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
-	./srcs/libphilo/ft_atoi_err.c\
 	./srcs/philo.c\
+	./libph/ft_atoi_err.c\
 
 OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a  $(SRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
@@ -22,23 +22,20 @@ $(OBJDIR)/%.o : %.c
 	@if [ ! -d $(OBJDIR) ];then mkdir $(OBJDIR); fi
 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
 
-test:
-	echo $(OBJS)
-
 $(NAME)	: $(OBJS)
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -o $@
 
 clean	:
 	$(RM) $(OBJS) $(B_OBJS) $(DEPENDS)
 
-fclean	:
-	$(RM) $(NAME) $(OBJS) $(DEPENDS)
+fclean	: clean
+	$(RM) $(NAME)
 
 re		: fclean all
 
 add		:
 	bash header.sh $(SRCDIR) $(INCLUDE)/philo.h
-	bash make.sh $(SRCDIR) SRCS
+	bash make.sh "$(SRCDIR) $(LIBDIR)" SRCS
 
 norm	:
 	@norminette | grep -v ': OK!' || \

@@ -23,7 +23,6 @@ typedef struct s_phi
 	int	times;
 }t_phi;
 
-int	ft_atoi_err(char *s, int *i);
 int	validate_args(int argc, char **argv, t_phi *philo);
 
 #endif
