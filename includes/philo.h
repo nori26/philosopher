@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 06:45:34 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/08/03 06:45:36 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/08/03 21:49:55 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -16,13 +16,14 @@
 # include <stdio.h>
 typedef struct s_phi
 {
-	int	num_of_phi;
-	int	deadline;
-	int	eat;
-	int	sleep;
-	int	times;
+	int32_t	num_of_phi;
+	int32_t	deadline;
+	int32_t	eat;
+	int32_t	sleep;
+	int32_t	times;
 }t_phi;
 
-int	validate_args(int argc, char **argv, t_phi *philo);
+int32_t	validate_args(int argc, char **argv, t_phi *phi);
+int		ft_atoi_err(char *s, int *i);
 
 #endif

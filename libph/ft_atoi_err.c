@@ -10,7 +10,7 @@ int	ft_atoi_err(char *s, int *i)
 	num = 0;
 	sign = 1;
 	if (*s == '-' && '0' <= s[1] && s[1] <= '9')
-		sign = -(!!*s++);
+		sign = -!!*s++;
 	if (*s == '0' && s[1])
 		return (1);
 	while ('0' <= *s && *s <= '9')

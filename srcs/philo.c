@@ -9,20 +9,21 @@ int	main(int argc, char **argv)
 	philo = (t_phi){};
 	if (validate_args(argc, argv, &philo))
 		return (1);
-	printf("%d %d %d %d %d\n", philo.num_of_phi, philo.deadline, philo.eat, philo.sleep, philo.times);
 }
 
-int	validate_args(int argc, char **argv, t_phi *philo)
+int32_t	validate_args(int argc, char **argv, t_phi *p)
 {
-	int	i;
-
-	i = 0;
-	i |= ft_atoi_err(argv[1], &philo->num_of_phi);
-	i |= ft_atoi_err(argv[2], &philo->deadline);
-	i |= ft_atoi_err(argv[3], &philo->eat);
-	i |= ft_atoi_err(argv[4], &philo->sleep);
-	if (argc == 6)
-		i |= ft_atoi_err(argv[5], &philo->times);
-	return (i);
+	if (ft_atoi_err(argv[1], &p->num_of_phi)
+		|| ft_atoi_err(argv[2], &p->deadline)
+		|| ft_atoi_err(argv[3], &p->eat)
+		|| ft_atoi_err(argv[4], &p->sleep)
+		|| (argc == 6 && ft_atoi_err(argv[5], &p->times))
+		|| p->num_of_phi < 0
+		|| p->deadline < 0
+		|| p->eat < 0
+		|| p->sleep < 0 
+		|| p->times < 0)
+		return (1);
+	printf("%d %d %d %d %d\n", philo.num_of_phi, philo.deadline, philo.eat, philo.sleep, philo.times);
+	return (0);
 }
-
