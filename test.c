@@ -6,10 +6,12 @@
 
 int	main(void)
 {
-	int32_t	i,
-	j,
-	k;
+	int32_t	i = -10,
+	j = 0,
+	k = 0;
 
+	(void)k;
 	if (i >> 31)
 		puts("OK");
+	i /= j;
 }
