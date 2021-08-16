@@ -12,6 +12,9 @@ SRCS	=\
 	./srcs/threads_utils.c\
 	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
+	./libph/ft_lstclear.c\
+	./libph/ft_lstdelone.c\
+	./libph/ft_lstnew.c\
 
 OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a  $(SRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')

@@ -9,6 +9,7 @@ int	main(int argc, char **argv)
 		|| validate_args(argc, argv, philo))
 		return (1);
 	create_threads(philo);
+	free(philo->th);
 	free(philo);
 }
 
@@ -41,18 +42,20 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 int	create_threads(t_phi *philo)
 {
 	int64_t		i;
-	pthread_t	*th;
 
-	th = malloc(sizeof(pthread_t) * philo->num_of_phi);
-	if (!th)
+	philo->th = malloc(sizeof(pthread_t) * philo->num_of_phi);
+	if (!philo->th)
 		return (1);
 	i = 0;
 	while (i < philo->num_of_phi)
-		if (pthread_create(&th[i++], NULL, start_philo, philo))
-			return (freeturn(&th, 1));
+		if (pthread_create(&philo->th[i++], NULL, start_philo, philo))
+			return (freeturn(&philo->th, 1));
 	i = 0;
 	while (i < philo->num_of_phi)
-		if (pthread_join(th[i++], NULL))
-			return (freeturn(&th, 1));
-	return (freeturn(&th, 0));
+		if (pthread_join(philo->th[i++], NULL))
+			return (freeturn(&philo->th, 1));
+	i = 0;
+	while (i < philo->num_of_phi)
+		printf("%ld\n", philo->th[i++]);
+	return (freeturn(&philo->th, 0));
 }
