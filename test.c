@@ -88,19 +88,13 @@ void *func(void *arg)
 
 int main()
 {
-	// pthread_t	test;
-    // char        *s = malloc(100);
-
-    // pthread_create(&test, NULL, func, s);
-    // pthread_create(&test, NULL, func, s);
-    // pthread_create(&test, NULL, func, s);
-    // sleep(1);
-    // puts("aiueo");
-    // int i = 0;
-    // pthread_exit(&i);
     int64_t i;
-    if (ft_atol_err2("-1", &i))
-        puts("aiueo");
+    struct timeval t;
+
+    gettimeofday(&t, NULL);
+    i = (int64_t)t.tv_sec * 1000;
+    printf("%ld\n", i);
+    i *= 1000;
     printf("%ld\n", i);
 }
 // int global_val = 0;

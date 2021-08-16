@@ -1,7 +1,7 @@
 NAME	= philo
 SHELL	= /bin/bash
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -lpthread -MMD -MP
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP -g -fsanitize=address
 SRCDIR	= ./srcs
 LIBDIR	= ./libph
 OBJDIR	= ./obj
@@ -25,7 +25,7 @@ $(OBJDIR)/%.o : %.c
 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@
 
 clean	:
 	$(RM) $(OBJS) $(B_OBJS) $(DEPENDS)

@@ -1,8 +1,8 @@
 #include "philo.h"
 
-int	freeturn(char **p, int ret)
+int	freeturn(void *p, int ret)
 {
-	free(*p);
-	*p = NULL;
+	free(*(void **)p);
+	*(void **)p = NULL;
 	return (ret);
 }

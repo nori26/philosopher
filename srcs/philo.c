@@ -8,12 +8,13 @@ int	main(int argc, char **argv)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo))
 		return (1);
+	create_threads(philo);
 	free(philo);
 }
 
 int32_t	philo_init(t_phi **philo)
 {
-	*philo = malloc(sizeof(philo));
+	*philo = malloc(sizeof(t_phi));
 	if (!*philo)
 		return (1);
 	**philo = (t_phi){};
@@ -33,16 +34,16 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->sleep < 0
 		|| philo->times < 0)
 		return (freeturn(&philo, 1));
-	printf("%d %d %d %d %d\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
+	printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
 	return (0);
 }
 
 int	create_threads(t_phi *philo)
 {
-	size_t		i;
+	int64_t		i;
 	pthread_t	*th;
 
-	th = malloc(philo->num_of_phi);
+	th = malloc(sizeof(pthread_t) * philo->num_of_phi);
 	if (!th)
 		return (1);
 	i = 0;

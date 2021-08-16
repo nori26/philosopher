@@ -3,7 +3,11 @@
 # include <stdint.h>
 # include <limits.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <pthread.h>
+# include <sys/time.h>
+# include <unistd.h>
+typedef struct timeval	t_time;
 typedef struct s_phi
 {
 	int64_t		num_of_phi;
@@ -17,7 +21,9 @@ int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_phi *philo);
 void	*start_philo(void *arg);
-int		freeturn(char **p, int ret);
+void	print_status(t_phi *philo);
+int64_t	get_msec();
+int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
 
 #endif
