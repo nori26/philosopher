@@ -9,6 +9,8 @@ INCLUDE	= ./includes
 VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
 	./srcs/philo.c\
+	./srcs/threads_utils.c\
+	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
 
 OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
