@@ -1,9 +1,10 @@
 #include "philo.h"
 
-int	ft_atoi_err(char *s, int *i)
+int	ft_atol_err(char *s, int64_t *i)
 {
 	char		sign;
 	uint64_t	num;
+	uint64_t	prev;
 
 	if (!s || !*s)
 		return (1);
@@ -15,10 +16,11 @@ int	ft_atoi_err(char *s, int *i)
 		return (1);
 	while ('0' <= *s && *s <= '9')
 	{
+		prev = num;
 		num = num * 10 + *s++ - '0';
-		if ((sign > 0 && num > INT_MAX) || (sign < 0 && num > -(long)INT_MIN))
+		if (prev >> 60 || (num - (sign < 0)) >> 63)
 			return (1);
 	}
-	*i = sign * (int)num;
+	*i = sign * num;
 	return (*s && !('0' <= *s && *s <= '9'));
 }
