@@ -6,9 +6,11 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 06:45:34 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/08/16 09:18:48 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/08/16 10:07:29 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHILO_H
 # define PHILO_H
 # include <stdint.h>
 # include <limits.h>
