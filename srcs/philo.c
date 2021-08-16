@@ -2,15 +2,21 @@
 
 int	main(int argc, char **argv)
 {
-	t_phi		*philo;
+	t_phi	*philo;
+	t_data	*data;
 
+	philo = NULL;
+	data = NULL;
 	if ((argc != 5 && argc != 6)
 		|| philo_init(&philo)
-		|| validate_args(argc, argv, philo))
+		|| validate_args(argc, argv, philo)
+		|| create_threads(&data, philo)
+		|| 0)
+	{
+		exit_philo(data, philo);
 		return (1);
-	create_threads(philo);
-	free(philo->th);
-	free(philo);
+	}
+	exit_philo(data, philo);
 }
 
 int32_t	philo_init(t_phi **philo)
@@ -34,28 +40,33 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->eat < 0
 		|| philo->sleep < 0
 		|| philo->times < 0)
-		return (freeturn(&philo, 1));
+		return (1);
 	printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
 	return (0);
 }
 
-int	create_threads(t_phi *philo)
+int	create_threads(t_data **data, t_phi *philo)
 {
-	int64_t		i;
+	int64_t	i;
 
-	philo->th = malloc(sizeof(pthread_t) * philo->num_of_phi);
-	if (!philo->th)
+	*data = malloc(sizeof(t_data) * philo->num_of_phi);
+	if (!*data)
 		return (1);
 	i = 0;
 	while (i < philo->num_of_phi)
-		if (pthread_create(&philo->th[i++], NULL, start_philo, philo))
-			return (freeturn(&philo->th, 1));
+	{
+		(*data)[i].phi = philo;
+		(*data)[i].num = i + 1;
+		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
+			return (1);
+		i++;
+	}
 	i = 0;
 	while (i < philo->num_of_phi)
-		if (pthread_join(philo->th[i++], NULL))
-			return (freeturn(&philo->th, 1));
+		if (pthread_join((*data)[i].th, NULL))
+			return (1);
 	i = 0;
 	while (i < philo->num_of_phi)
-		printf("%ld\n", philo->th[i++]);
-	return (freeturn(&philo->th, 0));
+		printf("%ld\n", (*data)[i++].th);
+	return (0);
 }

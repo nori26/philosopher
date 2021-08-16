@@ -1,28 +1,25 @@
 #include "philo.h"
-int g;
+
 void	*start_philo(void *arg)
 {
-	t_phi	*philo;
+	t_data	*data;
 
-	philo = arg;
-	print_status(philo);
+	data = arg;
+	print_status(data);
 	return (NULL);
-	(void)philo;
+	(void)data;
 }
 
-void	print_status(t_phi *philo)
+void	print_status(t_data *data)
 {
-	int g2;
 	int64_t	timestamp;
 
-	g2 = g++;
 	timestamp = get_msec();
 	while (get_msec() - timestamp < 10000)
 	{
-		printf("%d %ld eating\n", g2, timestamp);
+		printf("%ld %ld eating\n", data->num, timestamp);
 		sleep(1);
 	}
-	(void)philo;
 }
 
 int64_t	get_msec()
