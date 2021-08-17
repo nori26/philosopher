@@ -50,13 +50,13 @@ int	create_threads(t_data **data, t_phi *philo)
 	int64_t	i;
 
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
-	if (!*data)
+	philo->fork = malloc(philo->num_of_phi);
+	if (!*data || !philo->fork)
 		return (1);
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
-		(*data)[i].phi = philo;
-		(*data)[i].num = i + 1;
+		(*data)[i] = (t_data){.phi = philo, .num = i + 1};
 		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
 			return (1);
 		i++;

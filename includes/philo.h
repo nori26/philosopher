@@ -21,13 +21,23 @@ typedef struct	s_phi
 	int64_t		eat;
 	int64_t		sleep;
 	int64_t		times;
+	char		*fork;
 }t_phi;
 typedef struct	s_data
 {
 	t_phi		*phi;
 	int64_t		num;
 	pthread_t	th;
+	int32_t		status[5];
 }t_data;
+enum	e_status
+{
+	FORK,
+	EAT,
+	SLEEP,
+	THINK,
+	DIE
+};
 
 void	exit_philo(t_data *data, t_phi *philo);
 int32_t	philo_init(t_phi **philo);

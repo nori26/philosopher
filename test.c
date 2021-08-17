@@ -10,7 +10,6 @@
 #include <limits.h>
 #include "includes/philo.h"
 #include <pthread.h>
-#include "../../00/libft/libft.h"
 
 // int	ft_atol_err2(char *s, int64_t *i)
 // {
@@ -86,59 +85,15 @@ void *func(void *arg)
     return (arg);
 }
 
+int odd_ones(unsigned x)
+{
+	unsigned j = x ^ (x >> 16);
+	unsigned k = j ^ (j >> 8);
+	unsigned l = k ^ (k >> 4);
+	unsigned m = l ^ (l >> 2);
+	return ((m ^ (m >> 1)) & 1);
+}
 int main()
 {
-    int64_t i;
-    struct timeval t;
-
-    gettimeofday(&t, NULL);
-    i = (int64_t)t.tv_sec * 1000;
-    printf("%ld\n", i);
-    i *= 1000;
-    printf("%ld\n", i);
+	printf("%d\n", odd_ones(0b01100000000110000000010000000011));
 }
-// int global_val = 0;
-
-// void *
-// thread_start_routine(void *data)
-// {
-//   int val = (int)data;
-//   int i;
-
-//   printf("thread_start_routine : val=%d\n", val);
-//   for (i=0; i<10; i++) {
-//     global_val++;
-//     printf("thread_start_routine : i=%d, g=%d\n", i, global_val);
-
-//     sleep(1);
-//   }
-
-//   return NULL;
-// }
-
-// int
-// main()
-// {
-// //   int i;
-//   pthread_t th;
-//   void *th_ret;
-
-//   if (pthread_create(&th, NULL, thread_start_routine, (void *)100) != 0) {
-//     perror("pthread_create");
-//     return 1;
-//   }
-
-// //   for (i=0; i<10; i++) {
-// //     global_val++;
-// //     printf("main : i=%d, g=%d\n", i, global_val);
-
-// //     sleep(1);
-// //   }
-
-//   if (pthread_join(th, &th_ret) != 0) {
-//     perror("pthread_join");
-//     return 1;
-//   }
-
-//   return 0;
-// }
