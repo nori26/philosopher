@@ -2,7 +2,7 @@
 
 void	*start_philo(void *arg)
 {
-	fork_init(arg);
+	forks_init(arg);
 	for (int i = 0; i < 10; i++)
 	{
 		// printf("aiueo\n");
@@ -18,7 +18,7 @@ void	take_forks(t_data *data)
 	release_forks(data);
 }
 
-void	fork_init(t_data *data)
+void	forks_init(t_data *data)
 {
 	int	idx1;
 	int	idx2;
@@ -50,7 +50,7 @@ void	release_forks(t_data *data)
 
 void	print_status(t_data *data, int idx)
 {
-	printf(data->phi->format[idx], get_msec(), data->num);
+	printf(data->phi->format[idx], get_msec(), data->phi->width, data->num);
 }
 
 int64_t	get_msec()

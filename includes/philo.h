@@ -7,6 +7,12 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
+# define GREEN  "\x1b[32m"
+# define RED    "\x1b[31m"
+# define YELLOW "\x1b[33m"
+# define CYAN   "\x1b[36m"
+# define BLUE   "\x1b[34m"
+# define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
 typedef struct s_list	t_list;
 struct		s_list
@@ -22,6 +28,7 @@ typedef struct	s_phi
 	int64_t			sleep;
 	int64_t			times;
 	pthread_mutex_t	*forks;
+	int32_t			width;
 	char			*format[5];
 }t_phi;
 typedef struct	s_data
@@ -49,13 +56,13 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
 void	*start_philo(void *arg);
 void	take_forks(t_data *data);
-void	fork_init(t_data *data);
+void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);
 void	release_forks(t_data *data);
 void	print_status(t_data *data, int idx);
-void	format_init(char **format);
 int64_t	get_msec();
+int		count_digits(int64_t n);
 int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
 

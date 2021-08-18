@@ -11,6 +11,7 @@ SRCS	=\
 	./srcs/exit.c\
 	./srcs/philo.c\
 	./srcs/threads_utils.c\
+	./libph/count_digits.c\
 	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
 

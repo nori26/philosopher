@@ -42,11 +42,12 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->times < 0)
 		return (1);
 	printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
-	philo->format[0] = "%ld %3ld has taken a fork\n";
-	philo->format[1] = "%ld %3ld is eating\n";
-	philo->format[2] = "%ld %3ld is sleeping\n";
-	philo->format[3] = "%ld %3ld is thinking\n";
-	philo->format[4] = "%ld %3ld died\n";
+	philo->width = count_digits(philo->num_of_phi);
+	philo->format[0] = YELLOW"%ld %*ld has taken a fork\n"RESET;
+	philo->format[1] = GREEN"%ld %*ld is eating\n"RESET;
+	philo->format[2] = BLUE"%ld %*ld is sleeping\n"RESET;
+	philo->format[3] = CYAN"%ld %*ld is thinking\n"RESET;
+	philo->format[4] = RED"%ld %*ld died\n"RESET;
 	return (0);
 }
 
@@ -71,8 +72,5 @@ int	create_threads(t_data **data, t_phi *philo)
 	while (i < philo->num_of_phi)
 		if (pthread_join((*data)[i].th, NULL))
 			return (1);
-	i = 0;
-	while (i < philo->num_of_phi)
-		printf("%ld\n", (*data)[i++].th);
 	return (0);
 }
