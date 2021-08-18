@@ -2,35 +2,50 @@
 
 void	*start_philo(void *arg)
 {
-	t_data	*data;
-
-	data = arg;
-	print_status(data);
+	fork_init(arg);
+	take_fork(arg);
 	return (NULL);
-	(void)data;
 }
 
-void	print_status(t_data *data)
+void	take_fork(t_data *data)
 {
-	char	*format[5];
-	int64_t	timestamp;
-
-	timestamp = get_msec();
-	format_init(format);
-	while (get_msec() - timestamp < 10000)
-	{
-		printf("%ld %ld is eating\n", timestamp, data->num);
-		sleep(1);
-	}
+	get_fork(data);
+	release_fork(data);
 }
 
-void	format_init(char **format)
+void	fork_init(t_data *data)
 {
-	format[0] = "%ld %ld has taken a fork";
-	format[1] = "%ld %ld is eating";
-	format[2] = "%ld %ld is sleeping";
-	format[3] = "%ld %ld is thinking";
-	format[4] = "%ld %ld died";
+	int	idx1;
+	int	idx2;
+
+	idx1 = calc_idx(data->num, data->phi->num_of_phi, !(data->num % 2));
+	idx2 = calc_idx(data->num, data->phi->num_of_phi, (data->num % 2));
+	data->fork1 = &data->phi->fork[idx1];
+	data->fork2 = &data->phi->fork[idx2];
+}
+
+int	calc_idx(int64_t n, int64_t max, int offset)
+{
+	return (((n - offset) % max));
+}
+
+void	get_fork(t_data *data)
+{
+	pthread_mutex_lock(data->fork1);
+	print_status(data, FORK);
+	pthread_mutex_lock(data->fork2);
+	print_status(data, FORK);
+}
+
+void	release_fork(t_data *data)
+{
+	pthread_mutex_unlock(data->fork1);
+	pthread_mutex_unlock(data->fork2);
+}
+
+void	print_status(t_data *data, int idx)
+{
+	printf(data->phi->format[idx], get_msec(), data->num);
 }
 
 int64_t	get_msec()
