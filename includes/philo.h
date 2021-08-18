@@ -21,7 +21,7 @@ typedef struct	s_phi
 	int64_t			eat;
 	int64_t			sleep;
 	int64_t			times;
-	pthread_mutex_t	*fork;
+	pthread_mutex_t	*forks;
 	char			*format[5];
 }t_phi;
 typedef struct	s_data
@@ -48,11 +48,11 @@ int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
 void	*start_philo(void *arg);
-void	take_fork(t_data *data);
+void	take_forks(t_data *data);
 void	fork_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
-void	get_fork(t_data *data);
-void	release_fork(t_data *data);
+void	get_forks(t_data *data);
+void	release_forks(t_data *data);
 void	print_status(t_data *data, int idx);
 void	format_init(char **format);
 int64_t	get_msec();

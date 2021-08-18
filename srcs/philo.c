@@ -42,11 +42,11 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->times < 0)
 		return (1);
 	printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
-	philo->format[0] = "%ld %ld has taken a fork";
-	philo->format[1] = "%ld %ld is eating";
-	philo->format[2] = "%ld %ld is sleeping";
-	philo->format[3] = "%ld %ld is thinking";
-	philo->format[4] = "%ld %ld died";
+	philo->format[0] = "%ld %3ld has taken a fork\n";
+	philo->format[1] = "%ld %3ld is eating\n";
+	philo->format[2] = "%ld %3ld is sleeping\n";
+	philo->format[3] = "%ld %3ld is thinking\n";
+	philo->format[4] = "%ld %3ld died\n";
 	return (0);
 }
 
@@ -55,14 +55,14 @@ int	create_threads(t_data **data, t_phi *philo)
 	int64_t	i;
 
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
-	philo->fork = malloc(philo->num_of_phi);
-	if (!*data || !philo->fork)
+	philo->forks = malloc(philo->num_of_phi);
+	if (!*data || !philo->forks)
 		return (1);
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
 		(*data)[i] = (t_data){.phi = philo, .num = i + 1};
-		pthread_mutexattr_init(&philo->fork[i]);
+		pthread_mutex_init(&philo->forks[i], NULL);
 		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
 			return (1);
 		i++;
