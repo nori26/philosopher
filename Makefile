@@ -10,6 +10,7 @@ VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
 	./srcs/exit.c\
 	./srcs/philo.c\
+	./srcs/take_a_fork.c\
 	./srcs/threads_utils.c\
 	./libph/count_digits.c\
 	./libph/freeturn.c\
