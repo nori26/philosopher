@@ -51,6 +51,10 @@ enum	e_status
 };
 
 void	exit_philo(t_data *data, t_phi *philo);
+void	actions(t_data *data, int action, int64_t msec);
+void	eating(t_data *data);
+void	sleeping(t_data *data);
+void	thinking(t_data *data);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);

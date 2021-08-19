@@ -45,8 +45,8 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 	philo->width = count_digits(philo->num_of_phi);
 	philo->format[0] = YELLOW"%ld %*ld has taken a fork\n"RESET;
 	philo->format[1] = GREEN"%ld %*ld is eating\n"RESET;
-	philo->format[2] = BLUE"%ld %*ld is sleeping\n"RESET;
-	philo->format[3] = CYAN"%ld %*ld is thinking\n"RESET;
+	philo->format[2] = CYAN"%ld %*ld is sleeping\n"RESET;
+	philo->format[3] = "%ld %*ld is thinking\n";
 	philo->format[4] = RED"%ld %*ld died\n"RESET;
 	return (0);
 }

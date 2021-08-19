@@ -9,6 +9,7 @@ INCLUDE	= ./includes
 VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
 	./srcs/exit.c\
+	./srcs/life.c\
 	./srcs/philo.c\
 	./srcs/take_a_fork.c\
 	./srcs/threads_utils.c\

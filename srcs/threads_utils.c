@@ -7,7 +7,9 @@ void	*start_philo(void *arg)
 	{
 		// printf("aiueo\n");
 		take_forks(arg);
-		sleep(1);
+		eating(arg);
+		sleeping(arg);
+		thinking(arg);
 	}
 	return (NULL);
 }
