@@ -55,9 +55,9 @@ int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
 void	*start_philo(void *arg);
-void	take_forks(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
+void	take_forks(t_data *data);
 void	get_forks(t_data *data);
 void	release_forks(t_data *data);
 void	print_status(t_data *data, int idx);
@@ -65,5 +65,6 @@ int64_t	get_msec();
 int		count_digits(int64_t n);
 int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
+void	mymsleep(int64_t msec);
 
 #endif

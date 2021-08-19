@@ -14,6 +14,7 @@ SRCS	=\
 	./libph/count_digits.c\
 	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
+	./libph/my_msleep.c\
 
 OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a  $(SRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')

@@ -3,19 +3,13 @@
 void	*start_philo(void *arg)
 {
 	forks_init(arg);
-	for (int i = 0; i < 10; i++)
+	for (;;)
 	{
 		// printf("aiueo\n");
 		take_forks(arg);
 		sleep(1);
 	}
 	return (NULL);
-}
-
-void	take_forks(t_data *data)
-{
-	get_forks(data);
-	release_forks(data);
 }
 
 void	forks_init(t_data *data)
@@ -32,6 +26,12 @@ void	forks_init(t_data *data)
 int	calc_idx(int64_t n, int64_t max, int offset)
 {
 	return (((n - offset) % max));
+}
+
+void	take_forks(t_data *data)
+{
+	get_forks(data);
+	release_forks(data);
 }
 
 void	get_forks(t_data *data)
