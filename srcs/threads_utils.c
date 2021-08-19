@@ -3,11 +3,11 @@
 void	*start_philo(void *arg)
 {
 	forks_init(arg);
-	for (;;)
+	while (1)
 	{
-		// printf("aiueo\n");
-		take_forks(arg);
+		get_forks(arg);
 		eating(arg);
+		release_forks(arg);
 		sleeping(arg);
 		thinking(arg);
 	}

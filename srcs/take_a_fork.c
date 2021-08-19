@@ -16,12 +16,6 @@ int	calc_idx(int64_t n, int64_t max, int offset)
 	return (((n - offset) % max));
 }
 
-void	take_forks(t_data *data)
-{
-	get_forks(data);
-	release_forks(data);
-}
-
 void	get_forks(t_data *data)
 {
 	pthread_mutex_lock(data->fork1);
