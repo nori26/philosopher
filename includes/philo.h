@@ -82,7 +82,6 @@ void	release_forks(t_data *data);
 void	*start_philo(void *arg);
 void	print_status(t_data *data, int idx, int64_t msec);
 int		count_digits(int64_t n);
-int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
 int64_t	get_msec();
 int64_t	mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)());

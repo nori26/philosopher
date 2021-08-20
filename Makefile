@@ -1,7 +1,7 @@
 NAME	= philo
 SHELL	= /bin/bash
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP -g -fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP
 SRCDIR	= ./srcs
 LIBDIR	= ./libph
 OBJDIR	= ./obj
@@ -16,7 +16,6 @@ SRCS	=\
 	./srcs/take_a_fork.c\
 	./srcs/threads_utils.c\
 	./libph/count_digits.c\
-	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
 	./libph/get_msec.c\
 	./libph/mtx_do_func.c\

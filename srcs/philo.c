@@ -57,7 +57,7 @@ int	create_threads(t_data **data, t_phi *philo)
 	int64_t	i;
 
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
-	philo->forks = malloc(philo->num_of_phi);
+	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
 	if (!*data || !philo->forks)
 		return (1);
 	mutex_init_forks(philo);
