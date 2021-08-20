@@ -18,6 +18,7 @@ SRCS	=\
 	./libph/count_digits.c\
 	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
+	./libph/get_msec.c\
 	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
 
