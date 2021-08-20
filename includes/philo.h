@@ -31,6 +31,7 @@ typedef struct	s_phi
 	pthread_mutex_t	eos;
 	int32_t			width;
 	int32_t			end_of_simulation;
+	pthread_mutex_t	output;
 	char			*format[5];
 }t_phi;
 typedef struct	s_data
@@ -74,7 +75,7 @@ int64_t	store_start_time(t_data *data);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
-void	mutex_init_forks(t_phi *philo);
+void	mtx_init_philo(t_phi *philo);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);

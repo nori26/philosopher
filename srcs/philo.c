@@ -60,7 +60,7 @@ int	create_threads(t_data **data, t_phi *philo)
 	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
 	if (!*data || !philo->forks)
 		return (1);
-	mutex_init_forks(philo);
+	mtx_init_philo(philo);
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
@@ -78,11 +78,12 @@ int	create_threads(t_data **data, t_phi *philo)
 	return (0);
 }
 
-void	mutex_init_forks(t_phi *philo)
+void	mtx_init_philo(t_phi *philo)
 {
 	int64_t	i;
 
 	pthread_mutex_init(&philo->eos, NULL);
+	pthread_mutex_init(&philo->output, NULL);
 	i = 0;
 	while (i < philo->num_of_phi)
 		pthread_mutex_init(&philo->forks[i++], NULL);
