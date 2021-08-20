@@ -55,15 +55,16 @@ int	create_threads(t_data **data, t_phi *philo)
 {
 	int64_t	i;
 
+	// gettimeofday();
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
 	philo->forks = malloc(philo->num_of_phi);
 	if (!*data || !philo->forks)
 		return (1);
+	mutex_init_forks(philo);
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
 		(*data)[i] = (t_data){.phi = philo, .num = i + 1};
-		pthread_mutex_init(&philo->forks[i], NULL);
 		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
 			return (1);
 		i++;
@@ -73,4 +74,13 @@ int	create_threads(t_data **data, t_phi *philo)
 		if (pthread_join((*data)[i].th, NULL))
 			return (1);
 	return (0);
+}
+
+void	mutex_init_forks(t_phi *philo)
+{
+	int64_t	i;
+
+	i = 0;
+	while (i < philo->num_of_phi)
+		pthread_mutex_init(&philo->forks[i++], NULL);
 }

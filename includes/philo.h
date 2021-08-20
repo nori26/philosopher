@@ -38,8 +38,12 @@ typedef struct	s_data
 	pthread_t		th;
 	int32_t			status[5];
 	int32_t			idx[2];
+	int64_t			start;
+	int64_t			died;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
+	pthread_mutex_t	mstart;
+	pthread_mutex_t	mdied;
 }t_data;
 enum	e_status
 {
