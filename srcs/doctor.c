@@ -7,7 +7,7 @@ void	doctor(t_data *data)
 		data->now = get_msec();
 		if (within_deadline(data))
 		{
-			i_am_dead(data);
+			i_have_died(data);
 			print_status(data, DIE, data->now);
 			return ;
 		}

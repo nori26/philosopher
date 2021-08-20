@@ -57,8 +57,8 @@ enum	e_status
 };
 
 int32_t	is_dead(t_data *data);
-void	i_am_dead(t_data *data);
 int		dead_check(t_data *data);
+void	i_have_died(t_data *data);
 int		set_deadflag(t_data *data);
 void	doctor(t_data *data);
 int		within_deadline(t_data *data);
