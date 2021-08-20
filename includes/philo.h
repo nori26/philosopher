@@ -56,7 +56,7 @@ enum	e_status
 	DIE
 };
 
-int32_t	is_dead(t_data *data);
+int		is_dead(t_data *data);
 int		dead_check(t_data *data);
 void	i_have_died(t_data *data);
 int		set_deadflag(t_data *data);
@@ -79,10 +79,10 @@ void	release_forks(t_data *data);
 void	*start_philo(void *arg);
 void	print_status(t_data *data, int idx, int64_t msec);
 int64_t	get_msec();
-int		mtx_do_func(t_data *data, pthread_mutex_t *lock, int (*func)());
 int		count_digits(int64_t n);
 int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
+int		mtx_do_func(void *arg, pthread_mutex_t *lock, int (*func)());
 void	mymsleep(int64_t msec);
 
 #endif

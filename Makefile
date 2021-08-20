@@ -18,6 +18,7 @@ SRCS	=\
 	./libph/count_digits.c\
 	./libph/freeturn.c\
 	./libph/ft_atoi_err.c\
+	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
 
 OBJS	= $(shell basename -a  $(SRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')

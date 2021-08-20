@@ -1,6 +1,6 @@
 #include "philo.h"
 
-int32_t	is_dead(t_data *data)
+int	is_dead(t_data *data)
 {
 	return (mtx_do_func(data, &data->mdied, dead_check));
 }
