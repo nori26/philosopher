@@ -2,22 +2,23 @@
 
 int64_t	is_dead(t_data *data)
 {
-	return (mtx_do_func(data, &data->mdied, dead_check));
+	return (mtx_do_func(&data->died, &data->mdied, ret_arg) +
+		mtx_do_func(&data->phi->end_of_simulation, &data->phi->eos, ret_arg));
 }
 
-int64_t	dead_check(t_data *data)
+int64_t	ret_arg(int32_t *arg)
 {
-	return (data->died + data->phi->end_of_simulation);
+	return (*arg);
 }
 
 void	i_have_died(t_data *data)
 {
-	mtx_do_func(data, &data->mdied, set_deadflag);
+	mtx_do_func(&data->died, &data->mdied, set_flag);
+	mtx_do_func(&data->phi->end_of_simulation, &data->phi->eos, set_flag);
 }
 
-int64_t	set_deadflag(t_data *data)
+int64_t	set_flag(int32_t *flag)
 {
-	data->died = 1;
-	data->phi->end_of_simulation = 1;
+	*flag = 1;
 	return (0);
 }

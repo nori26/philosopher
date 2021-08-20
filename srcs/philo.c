@@ -64,6 +64,8 @@ int	create_threads(t_data **data, t_phi *philo)
 	while (i < philo->num_of_phi)
 	{
 		(*data)[i] = (t_data){.phi = philo, .num = i + 1, .start = get_msec()};
+		pthread_mutex_init(&(*data)[i].mstart, NULL);
+		pthread_mutex_init(&(*data)[i].mdied, NULL);
 		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
 			return (1);
 		i++;
@@ -79,6 +81,7 @@ void	mutex_init_forks(t_phi *philo)
 {
 	int64_t	i;
 
+	pthread_mutex_init(&philo->eos, NULL);
 	i = 0;
 	while (i < philo->num_of_phi)
 		pthread_mutex_init(&philo->forks[i++], NULL);

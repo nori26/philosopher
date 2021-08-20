@@ -28,6 +28,7 @@ typedef struct	s_phi
 	int64_t			sleep;
 	int64_t			times;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	eos;
 	int32_t			width;
 	int32_t			end_of_simulation;
 	char			*format[5];
@@ -41,7 +42,7 @@ typedef struct	s_data
 	int32_t			idx[2];
 	int64_t			start;
 	int32_t			died;
-	int32_t			now;
+	int64_t			now;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mstart;
@@ -57,9 +58,9 @@ enum	e_status
 };
 
 int64_t	is_dead(t_data *data);
-int64_t	dead_check(t_data *data);
+int64_t	ret_arg(int32_t *arg);
 void	i_have_died(t_data *data);
-int64_t	set_deadflag(t_data *data);
+int64_t	set_flag(int32_t *flag);
 void	doctor(t_data *data);
 int64_t	within_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
