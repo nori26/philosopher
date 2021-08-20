@@ -56,18 +56,20 @@ enum	e_status
 	DIE
 };
 
-int		is_dead(t_data *data);
-int		dead_check(t_data *data);
+int64_t	is_dead(t_data *data);
+int64_t	dead_check(t_data *data);
 void	i_have_died(t_data *data);
-int		set_deadflag(t_data *data);
+int64_t	set_deadflag(t_data *data);
 void	doctor(t_data *data);
-int		within_deadline(t_data *data);
-int		check_deadline(t_data *data);
+int64_t	within_deadline(t_data *data);
+int64_t	check_deadline(t_data *data);
 void	exit_philo(t_data *data, t_phi *philo);
-void	actions(t_data *data, int action, int64_t msec);
+void	actions(t_data *data, int action, int64_t sleeptime, int64_t now);
 void	eating(t_data *data);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
+int64_t	start_time_init(t_data *data);
+int64_t	store_start_time(t_data *data);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
@@ -82,7 +84,7 @@ int64_t	get_msec();
 int		count_digits(int64_t n);
 int		freeturn(void *p, int ret);
 int		ft_atol_err(char *s, int64_t *i);
-int		mtx_do_func(void *arg, pthread_mutex_t *lock, int (*func)());
+int64_t	mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)());
 void	mymsleep(int64_t msec);
 
 #endif

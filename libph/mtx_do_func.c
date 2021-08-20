@@ -1,8 +1,8 @@
 #include "philo.h"
 
-int	mtx_do_func(void *arg, pthread_mutex_t *lock, int (*func)())
+int64_t mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)())
 {
-	int32_t	ret;
+	int64_t	ret;
 
 	pthread_mutex_lock(lock);
 	ret = func(arg);

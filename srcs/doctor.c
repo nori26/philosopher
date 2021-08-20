@@ -15,12 +15,12 @@ void	doctor(t_data *data)
 	}
 }
 
-int	within_deadline(t_data *data)
+int64_t	within_deadline(t_data *data)
 {
 	return (mtx_do_func(data, &data->mstart, check_deadline));
 }
 
-int	check_deadline(t_data *data)
+int64_t	check_deadline(t_data *data)
 {
 	return (data->start + data->phi->deadline < data->now);
 }
