@@ -2,17 +2,25 @@
 
 void	doctor(t_data *data)
 {
-	while (1)
+	while (!is_dead(data))
 	{
-		pthread_mutex_lock(&data->mstart);
-		if (data->start + data->phi->deadline < get_msec())
+		data->now = get_msec();
+		if (within_deadline(data))
 		{
-			pthread_mutex_lock(&data->mdied);
-			data->died = 1;
-			pthread_mutex_unlock(&data->mdied);
-			break ;
+			i_am_dead(data);
+			print_status(data, DIE, data->now);
+			return ;
 		}
-		pthread_mutex_unlock(&data->mstart);
 		usleep(1000);
 	}
+}
+
+int	within_deadline(t_data *data)
+{
+	return (mtx_do_func(data, &data->mstart, check_deadline));
+}
+
+int	check_deadline(t_data *data)
+{
+	return (data->start + data->phi->deadline < data->now);
 }

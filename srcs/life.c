@@ -2,7 +2,9 @@
 
 void	actions(t_data *data, int action, int64_t msec)
 {
-	print_status(data, action);
+	if (is_dead(data))
+		return ;
+	print_status(data, action, get_msec());
 	mymsleep(msec);
 }
 
@@ -18,5 +20,5 @@ void	sleeping(t_data *data)
 
 void	thinking(t_data *data)
 {
-	print_status(data, THINK);
+	actions(data, THINK, 0);
 }

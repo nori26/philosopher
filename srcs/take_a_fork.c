@@ -19,9 +19,9 @@ int	calc_idx(int64_t n, int64_t max, int offset)
 void	get_forks(t_data *data)
 {
 	pthread_mutex_lock(data->fork1);
-	print_status(data, FORK);
+	print_status(data, FORK, get_msec());
 	pthread_mutex_lock(data->fork2);
-	print_status(data, FORK);
+	print_status(data, FORK, get_msec());
 }
 
 void	release_forks(t_data *data)

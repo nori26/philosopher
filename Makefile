@@ -8,6 +8,8 @@ OBJDIR	= ./obj
 INCLUDE	= ./includes
 VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
+	./srcs/died.c\
+	./srcs/doctor.c\
 	./srcs/exit.c\
 	./srcs/life.c\
 	./srcs/philo.c\

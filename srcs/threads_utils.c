@@ -3,7 +3,7 @@
 void	*start_philo(void *arg)
 {
 	forks_init(arg);
-	while (1)
+	while (!is_dead(arg))
 	{
 		get_forks(arg);
 		eating(arg);
@@ -14,9 +14,9 @@ void	*start_philo(void *arg)
 	return (NULL);
 }
 
-void	print_status(t_data *data, int idx)
+void	print_status(t_data *data, int idx, int64_t msec)
 {
-	printf(data->phi->format[idx], get_msec(), data->phi->width, data->num);
+	printf(data->phi->format[idx], msec, data->phi->width, data->num);
 }
 
 int64_t	get_msec()
@@ -25,4 +25,14 @@ int64_t	get_msec()
 
 	gettimeofday(&tv, NULL);
 	return ((int64_t)tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+int	mtx_do_func(t_data *data, pthread_mutex_t *lock, int (*func)())
+{
+	int32_t	ret;
+
+	pthread_mutex_lock(lock);
+	ret = func(data);
+	pthread_mutex_unlock(lock);
+	return (ret);
 }
