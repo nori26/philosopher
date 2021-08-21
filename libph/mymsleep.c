@@ -7,9 +7,9 @@ void	mymsleep(int64_t msec)
 
 	if (!msec)
 		return ;
-	start = get_usec();
+	start = get_msec() * 1000;
 	usec = msec * 1000;
-	// while (get_usec() - start < usec)
-	while (get_msec() * 1000 - start < usec)
+	while (get_usec() - start < usec)
+	// while (get_msec() - start < usec)
 		usleep(1000);
 }
