@@ -7,20 +7,20 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	data = NULL;
-	// if ((argc != 5 && argc != 6)
-	// 	|| philo_init(&philo)
-	// 	|| validate_args(argc, argv, philo)
-	// 	|| create_threads(&data, philo)
-	// 	|| wait_end(data))
-	// {
-	// 	exit_philo(data, philo);
-	// 	return (1);
-	// }
-	int64_t start = get_usec();
-	mymsleep(200);
-	(void)argc;
-	(void)argv;
-	printf("now %ld\n", (long)(get_usec() - start));
+	if ((argc != 5 && argc != 6)
+		|| philo_init(&philo)
+		|| validate_args(argc, argv, philo)
+		|| create_threads(&data, philo)
+		|| wait_end(data))
+	{
+		exit_philo(data, philo);
+		return (1);
+	}
+	// int64_t start = get_usec();
+	// mymsleep(200);
+	// (void)argc;
+	// (void)argv;
+	// printf("now %ld\n", (long)(get_usec() - start));
 	exit_philo(data, philo);
 }
 
