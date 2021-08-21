@@ -33,3 +33,14 @@ void	mtx_init_data(t_data *data)
 	pthread_mutex_init(&data->mtxdied, NULL);
 	pthread_mutex_init(&data->mtxeatcount, NULL);
 }
+
+int	wait_end_of_simulation(t_data *data)
+{
+	int64_t	i;
+
+	i = 0;
+	while (i < data->phi->num_of_phi)
+		if (pthread_join(data[i].th, NULL) || pthread_join(data[i++].th2, NULL))
+			return (1);
+	return (0);
+}
