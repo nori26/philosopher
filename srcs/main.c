@@ -34,7 +34,8 @@ int32_t	philo_init(t_phi **philo)
 		.format[1] = GREEN"%ld %*ld is eating\n"RESET,
 		.format[2] = CYAN"%ld %*ld is sleeping\n"RESET,
 		.format[3] = "%ld %*ld is thinking\n",
-		.format[4] = RED"%ld %*ld died\n"RESET
+		.format[4] = RED"%ld %*ld died\n"RESET,
+		.times = -1
 	};
 	return (0);
 }
@@ -50,9 +51,9 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->deadline < 0
 		|| philo->eat < 0
 		|| philo->sleep < 0
-		|| philo->times < 0)
+		|| (argc == 6 && philo->times < 0))
 		return (1);
-	// printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
+	printf("%ld %ld %ld %ld %ld\n", philo->num_of_phi, philo->deadline, philo->eat, philo->sleep, philo->times);
 	philo->width = count_digits(philo->num_of_phi);
 	return (0);
 }
@@ -69,9 +70,10 @@ int	create_threads(t_data **data, t_phi *philo)
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
-		(*data)[i] = (t_data){.phi = philo, .num = i + 1, .start = get_msec()};
+		(*data)[i] = (t_data){.phi = philo, .num = i + 1, .start = get_msec(), .eatmax = philo->times};
 		pthread_mutex_init(&(*data)[i].mtxstart, NULL);
 		pthread_mutex_init(&(*data)[i].mtxdied, NULL);
+		pthread_mutex_init(&(*data)[i].mtxeatcount, NULL);
 		if (pthread_create(&(*data)[i].th, NULL, doctor, &(*data)[i])
 			|| pthread_create(&(*data)[i].th2, NULL, start_philo, &(*data)[i]))
 			return (1);

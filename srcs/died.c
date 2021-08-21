@@ -1,5 +1,10 @@
 #include "philo.h"
 
+int64_t	is_living(t_data *data)
+{
+	return (!is_dead(data));
+}
+
 int64_t	is_dead(t_data *data)
 {
 	return (mtx_do_func(&data->died, &data->mtxdied, ret_arg) +

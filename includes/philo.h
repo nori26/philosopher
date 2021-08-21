@@ -45,10 +45,13 @@ typedef struct	s_data
 	int64_t			start;
 	int32_t			died;
 	int64_t			now;
+	int64_t			eatmax;
+	int64_t			eatcount;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
 	pthread_mutex_t	mtxdied;
+	pthread_mutex_t	mtxeatcount;
 }t_data;
 enum	e_status
 {
@@ -59,6 +62,7 @@ enum	e_status
 	DIE
 };
 
+int64_t	is_living(t_data *data);
 int64_t	is_dead(t_data *data);
 int64_t	ret_arg(int32_t *arg);
 void	i_have_died(t_data *data);
@@ -85,6 +89,8 @@ void	get_forks(t_data *data);
 void	release_forks(t_data *data);
 void	take_a_fork(t_data *data);
 void	*start_philo(void *arg);
+int64_t	is_hungry(t_data *data);
+int64_t	is_hungry_funcp(t_data *data);
 int		count_digits(int64_t n);
 int		ft_atol_err(char *s, int64_t *i);
 int64_t	get_msec();
