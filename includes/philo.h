@@ -65,6 +65,7 @@ enum	e_status
 int		create_threads(t_data *data, t_phi *philo);
 void	data_init(t_data *data, int64_t idx, t_phi *philo);
 void	mtx_init_data(t_data *data);
+int		wait_end_of_simulation(t_data *data);
 int64_t	is_living(t_data *data);
 int64_t	is_dead(t_data *data);
 int64_t	ret_arg(int32_t *arg);
@@ -85,7 +86,6 @@ void	sleeping(t_data *data);
 void	thinking(t_data *data);
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now);
 void	print_status(t_data *data, int idx, int64_t msec);
-int		wait_end_of_simulation(t_data *data);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
