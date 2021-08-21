@@ -2,6 +2,8 @@
 
 void	*start_philo(void *arg)
 {
+	if (((t_data *)arg)->num == 1)
+		return (NULL);
 	forks_init(arg);
 	while (is_living(arg) && is_hungry(arg))
 	{
