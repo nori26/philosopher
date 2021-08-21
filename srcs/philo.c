@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	mymsleep(200);
 	(void)argc;
 	(void)argv;
-	printf("now %ld\n", (get_usec() - start) / 1000);
+	printf("now %ld\n", (long)(get_usec() - start) / 1000);
 	exit_philo(data, philo);
 }
 
