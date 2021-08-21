@@ -13,12 +13,13 @@ SRCS	=\
 	./srcs/eat.c\
 	./srcs/exit.c\
 	./srcs/life.c\
-	./srcs/philo.c\
+	./srcs/main.c\
 	./srcs/take_a_fork.c\
 	./srcs/threads_utils.c\
 	./libph/count_digits.c\
 	./libph/ft_atoi_err.c\
 	./libph/get_msec.c\
+	./libph/get_usec.c\
 	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
 
