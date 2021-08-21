@@ -15,6 +15,7 @@ void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)
 	if (is_dead(data))
 		return ;
 	print_status(data, action, now);
+	printf("now %ld\n", (long)(get_usec()));
 	mymsleep(sleeptime);
 }
 
