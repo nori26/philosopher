@@ -8,14 +8,17 @@ OBJDIR	= ./obj
 INCLUDE	= ./includes
 VPATH	= $(SRCDIR):$(LIBDIR)
 SRCS	=\
+	./srcs/create_threads.c\
 	./srcs/died.c\
 	./srcs/doctor.c\
 	./srcs/eat.c\
 	./srcs/exit.c\
+	./srcs/hugry.c\
 	./srcs/life.c\
 	./srcs/main.c\
+	./srcs/philo_init.c\
+	./srcs/start_philo.c\
 	./srcs/take_a_fork.c\
-	./srcs/threads_utils.c\
 	./libph/count_digits.c\
 	./libph/ft_atoi_err.c\
 	./libph/get_msec.c\
