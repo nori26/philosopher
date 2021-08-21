@@ -82,6 +82,7 @@ void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);
 void	release_forks(t_data *data);
+void	take_a_fork(t_data *data);
 void	*start_philo(void *arg);
 void	print_status(t_data *data, int idx, int64_t msec);
 int		count_digits(int64_t n);
