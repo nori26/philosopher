@@ -51,6 +51,16 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 	return (0);
 }
 
+int	philo_utils_init(t_data **data, t_phi *philo)
+{
+	*data = malloc(sizeof(t_data) * philo->num_of_phi);
+	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
+	if (!*data || !philo->forks)
+		return (1);
+	mtx_init_philo(philo);
+	philo->width = count_digits(philo->num_of_phi);
+}
+
 int	create_threads(t_data **data, t_phi *philo)
 {
 	int64_t		i;
@@ -82,6 +92,7 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo)
 	};
 	mtx_init_data(data);
 }
+
 void	mtx_init_data(t_data *data)
 {
 	pthread_mutex_init(&data->mtxstart, NULL);
