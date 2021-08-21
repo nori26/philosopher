@@ -1,5 +1,12 @@
 #include "philo.h"
 
+void	print_status(t_data *data, int idx, int64_t msec)
+{
+	pthread_mutex_lock(&data->phi->output);
+	printf(data->phi->format[idx], msec, data->phi->width, data->num);
+	pthread_mutex_unlock(&data->phi->output);
+}
+
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)
 {
 	if (is_dead(data))
