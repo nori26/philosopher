@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo)
 		|| create_threads(&data, philo)
-		|| 0)
+		|| wait_end(data))
 	{
 		exit_philo(data, philo);
 		return (1);
@@ -54,8 +54,9 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 
 int	create_threads(t_data **data, t_phi *philo)
 {
-	int64_t	i;
-
+	int64_t		i;
+	pthread_t	th;
+(void)th;
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
 	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
 	if (!*data || !philo->forks)
@@ -65,15 +66,26 @@ int	create_threads(t_data **data, t_phi *philo)
 	while (i < philo->num_of_phi)
 	{
 		(*data)[i] = (t_data){.phi = philo, .num = i + 1, .start = get_msec()};
-		pthread_mutex_init(&(*data)[i].mstart, NULL);
-		pthread_mutex_init(&(*data)[i].mdied, NULL);
-		if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
+		pthread_mutex_init(&(*data)[i].mtxstart, NULL);
+		pthread_mutex_init(&(*data)[i].mtxdied, NULL);
+		if (pthread_create(&(*data)[i].th, NULL, doctor, &(*data)[i])
+			|| pthread_create(&(*data)[i].th2, NULL, start_philo, &(*data)[i]))
+			// || pthread_detach(th))
 			return (1);
+		// if (pthread_create(&(*data)[i].th, NULL, start_philo, &(*data)[i]))
+		// 	return (1);
 		i++;
 	}
+	return (0);
+}
+
+int	wait_end(t_data *data)
+{
+	int64_t	i;
+
 	i = 0;
-	while (i < philo->num_of_phi)
-		if (pthread_join((*data)[i].th, NULL))
+	while (i < data->phi->num_of_phi)
+		if (pthread_join(data[i].th, NULL) || pthread_join(data[i++].th2, NULL))
 			return (1);
 	return (0);
 }

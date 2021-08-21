@@ -13,15 +13,17 @@ void	forks_init(t_data *data)
 
 int	calc_idx(int64_t n, int64_t max, int offset)
 {
-	return (((n - offset) % max));
+	return ((n - offset) % max);
 }
 
 void	get_forks(t_data *data)
 {
 	pthread_mutex_lock(data->fork1);
-	print_status(data, FORK, get_msec());
+	// print_status(data, FORK, get_msec());
+	actions(data, FORK, 0, get_msec());
 	pthread_mutex_lock(data->fork2);
-	print_status(data, FORK, get_msec());
+	actions(data, FORK, 0, get_msec());
+	// print_status(data, FORK, get_msec());
 }
 
 void	release_forks(t_data *data)
