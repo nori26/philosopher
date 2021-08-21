@@ -1,6 +1,6 @@
 #include "philo.h"
 
-int64_t	get_usec()
+int64_t	get_usec(void)
 {
 	t_time	tv;
 

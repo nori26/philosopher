@@ -7,8 +7,8 @@ int64_t	is_living(t_data *data)
 
 int64_t	is_dead(t_data *data)
 {
-	return (mtx_do_func(&data->died, &data->mtxdied, ret_arg) +
-		mtx_do_func(&data->phi->end_of_simulation, &data->phi->eos, ret_arg));
+	return (mtx_do_func(&data->died, &data->mtxdied, ret_arg)
+		+ mtx_do_func(&data->phi->end_of_simulation, &data->phi->eos, ret_arg));
 }
 
 int64_t	ret_arg(int32_t *arg)

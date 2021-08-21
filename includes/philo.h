@@ -20,7 +20,7 @@ struct		s_list
 	void	*content;
 	t_list	*next;
 };
-typedef struct	s_phi
+typedef struct s_phi
 {
 	int64_t			num_of_phi;
 	int64_t			deadline;
@@ -34,7 +34,7 @@ typedef struct	s_phi
 	pthread_mutex_t	output;
 	char			*format[5];
 }t_phi;
-typedef struct	s_data
+typedef struct s_data
 {
 	t_phi			*phi;
 	int64_t			num;
@@ -95,8 +95,8 @@ int64_t	is_hungry(t_data *data);
 int64_t	is_hungry_funcp(t_data *data);
 int		count_digits(int64_t n);
 int		ft_atol_err(char *s, int64_t *i);
-int64_t	get_msec();
-int64_t	get_usec();
+int64_t	get_msec(void);
+int64_t	get_usec(void);
 int64_t	mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)());
 void	mymsleep(int64_t msec);
 
