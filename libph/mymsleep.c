@@ -2,7 +2,7 @@
 
 void	mymsleep(int64_t msec)
 {
-	int64_t	usec;
+	register int64_t	usec;
 
 	if (!msec)
 		return ;

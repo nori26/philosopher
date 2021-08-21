@@ -7,15 +7,18 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	data = NULL;
-	if ((argc != 5 && argc != 6)
-		|| philo_init(&philo)
-		|| validate_args(argc, argv, philo)
-		|| create_threads(&data, philo)
-		|| wait_end(data))
-	{
-		exit_philo(data, philo);
-		return (1);
-	}
+	(void)argc;
+	(void)argv;
+	// if ((argc != 5 && argc != 6)
+	// 	|| philo_init(&philo)
+	// 	|| validate_args(argc, argv, philo)
+	// 	|| create_threads(&data, philo)
+	// 	|| wait_end(data))
+	// {
+	// 	exit_philo(data, philo);
+	// 	return (1);
+	// }
+	mymsleep(200);
 	exit_philo(data, philo);
 }
 
