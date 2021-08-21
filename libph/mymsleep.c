@@ -2,17 +2,13 @@
 
 void	mymsleep(int64_t msec)
 {
-	int64_t	usec;
+	register int64_t	usec;
+	register int64_t	start;
 
 	if (!msec)
 		return ;
+	start = get_usec();
 	usec = msec * 1000;
-	int64_t t = get_msec();
-	while (usec > 1000)
-	{
+	while (get_usec() - start < usec)
 		usleep(1000);
-		usec -= 1000;
-	}
-	usleep(usec);
-	printf("now %ld\n", get_msec());
 }

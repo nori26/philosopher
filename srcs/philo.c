@@ -7,8 +7,6 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	data = NULL;
-	(void)argc;
-	(void)argv;
 	if ((argc != 5 && argc != 6)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo)
@@ -18,7 +16,9 @@ int	main(int argc, char **argv)
 		exit_philo(data, philo);
 		return (1);
 	}
-	mymsleep(200);
+	// int64_t start = get_usec();
+	// mymsleep(200);
+	// printf("now %ld\n", get_usec() - start);
 	exit_philo(data, philo);
 }
 
