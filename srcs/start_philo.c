@@ -2,7 +2,7 @@
 
 void	*start_philo(void *arg)
 {
-	if (((t_data *)arg)->num == 1)
+	if (num_of_phi(arg) == 1)
 		return (NULL);
 	forks_init(arg);
 	while (is_living(arg) && is_hungry(arg))
@@ -14,4 +14,9 @@ void	*start_philo(void *arg)
 		thinking(arg);
 	}
 	return (NULL);
+}
+
+int64_t	num_of_phi(t_data *data)
+{
+	return (mtx_do_func(&data->phi->num_of_phi, &data->mtxnum, ret_arg));
 }

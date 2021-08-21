@@ -30,7 +30,7 @@ typedef struct s_phi
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	eos;
 	int32_t			width;
-	int32_t			end_of_simulation;
+	int64_t			end_of_simulation;
 	pthread_mutex_t	output;
 	char			*format[5];
 }t_phi;
@@ -43,7 +43,7 @@ typedef struct s_data
 	int32_t			status[5];
 	int32_t			idx[2];
 	int64_t			start;
-	int32_t			died;
+	int64_t			died;
 	int64_t			now;
 	int64_t			eatmax;
 	int64_t			eatcount;
@@ -51,6 +51,7 @@ typedef struct s_data
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
 	pthread_mutex_t	mtxdied;
+	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
 }t_data;
 enum	e_status
@@ -68,9 +69,9 @@ void	mtx_init_data(t_data *data);
 int		wait_end_of_simulation(t_data *data);
 int64_t	is_living(t_data *data);
 int64_t	is_dead(t_data *data);
-int64_t	ret_arg(int32_t *arg);
+int64_t	ret_arg(int64_t *arg);
 void	i_have_died(t_data *data);
-int64_t	set_flag(int32_t *flag);
+int64_t	set_flag(int64_t *flag);
 void	*doctor(void *arg);
 int64_t	within_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
@@ -91,6 +92,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	*start_philo(void *arg);
+int64_t	num_of_phi(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);

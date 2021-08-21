@@ -32,6 +32,7 @@ void	mtx_init_data(t_data *data)
 	pthread_mutex_init(&data->mtxstart, NULL);
 	pthread_mutex_init(&data->mtxdied, NULL);
 	pthread_mutex_init(&data->mtxeatcount, NULL);
+	pthread_mutex_init(&data->mtxnum, NULL);
 }
 
 int	wait_end_of_simulation(t_data *data)
