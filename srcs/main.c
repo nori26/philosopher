@@ -10,7 +10,8 @@ int	main(int argc, char **argv)
 	if ((argc != 5 && argc != 6)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo)
-		|| create_threads(&data, philo)
+		|| philo_utils_init(&data, philo)
+		|| create_threads(data, philo)
 		|| wait_end(data))
 	{
 		exit_philo(data, philo);
@@ -59,24 +60,25 @@ int	philo_utils_init(t_data **data, t_phi *philo)
 		return (1);
 	mtx_init_philo(philo);
 	philo->width = count_digits(philo->num_of_phi);
+	return (0);
 }
 
-int	create_threads(t_data **data, t_phi *philo)
+int	create_threads(t_data *data, t_phi *philo)
 {
 	int64_t		i;
 
-	philo->width = count_digits(philo->num_of_phi);
-	*data = malloc(sizeof(t_data) * philo->num_of_phi);
-	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
-	if (!*data || !philo->forks)
-		return (1);
-	mtx_init_philo(philo);
+	// philo->width = count_digits(philo->num_of_phi);
+	// *data = malloc(sizeof(t_data) * philo->num_of_phi);
+	// philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
+	// if (!*data || !philo->forks)
+	// 	return (1);
+	// mtx_init_philo(philo);
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
-		data_init(&(*data)[i], i, philo);
-		if (pthread_create(&(*data)[i].th, NULL, doctor, &(*data)[i])
-			|| pthread_create(&(*data)[i].th2, NULL, start_philo, &(*data)[i]))
+		data_init(&data[i], i, philo);
+		if (pthread_create(&data[i].th, NULL, doctor, &data[i])
+			|| pthread_create(&data[i].th2, NULL, start_philo, &data[i]))
 			return (1);
 		i++;
 	}
