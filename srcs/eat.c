@@ -5,7 +5,6 @@ void	eating(t_data *data)
 	int64_t	now;
 
 	now = start_time_init(data);
-	printf("now %ld\n", (long)(get_usec()));
 	actions(data, EAT, data->phi->eat, now);
 }
 
