@@ -73,6 +73,8 @@ int64_t	check_deadline(t_data *data);
 void	eating(t_data *data);
 int64_t	start_time_init(t_data *data);
 int64_t	store_start_time(t_data *data);
+void	inc_eatcount(t_data *data);
+int64_t	inc_eatcount_func(t_data *data);
 void	exit_philo(t_data *data, t_phi *philo);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);

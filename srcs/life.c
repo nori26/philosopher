@@ -12,7 +12,7 @@ void	thinking(t_data *data)
 
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)
 {
-	if (is_dead(data))
+	if (is_dead(data) || !is_hungry(data))
 		return ;
 	print_status(data, action, now);
 	mymsleep(sleeptime);
