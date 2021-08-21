@@ -16,7 +16,6 @@ void	*start_philo(void *arg)
 
 int64_t	is_hungry(t_data *data)
 {
-	return (1);
 	return (mtx_do_func(data, &data->mtxeatcount, is_hungry_funcp));
 }
 
