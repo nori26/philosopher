@@ -83,6 +83,8 @@ void	print_status(t_data *data, int idx, int64_t msec);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		create_threads(t_data **data, t_phi *philo);
+void	data_init(t_data *data, int64_t idx, t_phi *philo);
+void	mtx_init_data(t_data *data);
 int		wait_end(t_data *data);
 void	mtx_init_philo(t_phi *philo);
 void	forks_init(t_data *data);

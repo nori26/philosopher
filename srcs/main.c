@@ -16,11 +16,6 @@ int	main(int argc, char **argv)
 		exit_philo(data, philo);
 		return (1);
 	}
-	// int64_t start = get_usec();
-	// mymsleep(200);
-	// (void)argc;
-	// (void)argv;
-	// printf("now %ld\n", (long)(get_usec() - start));
 	exit_philo(data, philo);
 }
 
@@ -53,7 +48,6 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->sleep < 0
 		|| (argc == 6 && philo->times < 0))
 		return (1);
-	philo->width = count_digits(philo->num_of_phi);
 	return (0);
 }
 
@@ -61,6 +55,7 @@ int	create_threads(t_data **data, t_phi *philo)
 {
 	int64_t		i;
 
+	philo->width = count_digits(philo->num_of_phi);
 	*data = malloc(sizeof(t_data) * philo->num_of_phi);
 	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->num_of_phi);
 	if (!*data || !philo->forks)
@@ -69,16 +64,29 @@ int	create_threads(t_data **data, t_phi *philo)
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
-		(*data)[i] = (t_data){.phi = philo, .num = i + 1, .start = get_msec(), .eatmax = philo->times};
-		pthread_mutex_init(&(*data)[i].mtxstart, NULL);
-		pthread_mutex_init(&(*data)[i].mtxdied, NULL);
-		pthread_mutex_init(&(*data)[i].mtxeatcount, NULL);
+		data_init(&(*data)[i], i, philo);
 		if (pthread_create(&(*data)[i].th, NULL, doctor, &(*data)[i])
 			|| pthread_create(&(*data)[i].th2, NULL, start_philo, &(*data)[i]))
 			return (1);
 		i++;
 	}
 	return (0);
+}
+void	data_init(t_data *data, int64_t idx, t_phi *philo)
+{
+	*data = (t_data){
+		.phi = philo,
+		.num = idx + 1,
+		.start = get_msec(),
+		.eatmax = philo->times
+	};
+	mtx_init_data(data);
+}
+void	mtx_init_data(t_data *data)
+{
+	pthread_mutex_init(&data->mtxstart, NULL);
+	pthread_mutex_init(&data->mtxdied, NULL);
+	pthread_mutex_init(&data->mtxeatcount, NULL);
 }
 
 int	wait_end(t_data *data)
