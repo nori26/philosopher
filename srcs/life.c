@@ -1,10 +1,13 @@
 #include "philo.h"
 
-void	print_status(t_data *data, int idx, int64_t msec)
+void	sleeping(t_data *data)
 {
-	pthread_mutex_lock(&data->phi->output);
-	printf(data->phi->format[idx], msec, data->phi->width, data->num);
-	pthread_mutex_unlock(&data->phi->output);
+	actions(data, SLEEP, data->phi->sleep, get_msec());
+}
+
+void	thinking(t_data *data)
+{
+	actions(data, THINK, 0, get_msec());
 }
 
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)
@@ -15,12 +18,9 @@ void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)
 	mymsleep(sleeptime);
 }
 
-void	sleeping(t_data *data)
+void	print_status(t_data *data, int idx, int64_t msec)
 {
-	actions(data, SLEEP, data->phi->sleep, get_msec());
-}
-
-void	thinking(t_data *data)
-{
-	actions(data, THINK, 0, get_msec());
+	pthread_mutex_lock(&data->phi->output);
+	printf(data->phi->format[idx], msec, data->phi->width, data->num);
+	pthread_mutex_unlock(&data->phi->output);
 }
