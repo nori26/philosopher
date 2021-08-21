@@ -8,10 +8,10 @@ void	mymsleep(int64_t msec)
 		return ;
 	usec = msec * 1000;
 	int64_t t = get_msec();
-	while (usec > 100000)
+	while (usec > 1000)
 	{
-		usleep(100000);
-		usec -= 100000;
+		usleep(1000);
+		usec -= 1000;
 	}
 	usleep(usec);
 	printf("now %ld\n", (long)(get_msec() - t));

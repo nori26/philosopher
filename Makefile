@@ -1,7 +1,7 @@
 NAME	= philo
 SHELL	= /bin/bash
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP - O3
 SRCDIR	= ./srcs
 LIBDIR	= ./libph
 OBJDIR	= ./obj
