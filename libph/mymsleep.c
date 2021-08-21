@@ -13,6 +13,6 @@ void	mymsleep(int64_t msec)
 		usleep(1000);
 		usec -= 1000;
 	}
-	printf("now %ld\n", get_msec() - t);
+	printf("now %ld\n", (long)(get_msec() - t));
 	usleep(usec);
 }
