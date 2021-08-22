@@ -10,7 +10,7 @@ void	mymsleep(int64_t msec)
 	start = get_usec();
 	sleeptime = msec * 1000;
 	while (get_usec() - start < sleeptime - 1000)
-		usleep(500);
+		usleep(1000);
 	sleeptime = start + sleeptime - get_usec();
 	if (sleeptime > 0)
 		usleep(sleeptime);
