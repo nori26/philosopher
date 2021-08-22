@@ -17,6 +17,7 @@ SRCS	=\
 	./srcs/life.c\
 	./srcs/main.c\
 	./srcs/philo_init.c\
+	./srcs/print.c\
 	./srcs/start_philo.c\
 	./srcs/take_a_fork.c\
 	./libph/count_digits.c\

@@ -7,18 +7,12 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
-// # define GREEN  "\x1b[32m"
-// # define RED    "\x1b[31m"
-// # define YELLOW "\x1b[33m"
-// # define CYAN   "\x1b[36m"
-// # define BLUE   "\x1b[34m"
-// # define RESET  "\x1b[39m"
-# define GREEN  
-# define RED    
-# define YELLOW 
-# define CYAN   
-# define BLUE   
-# define RESET  
+# define GREEN  "\x1b[32m"
+# define RED    "\x1b[31m"
+# define YELLOW "\x1b[33m"
+# define CYAN   "\x1b[36m"
+# define BLUE   "\x1b[34m"
+# define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
 typedef struct s_data	t_data;
 typedef struct s_list	t_list;
@@ -94,14 +88,14 @@ int64_t	is_hungry(t_data *data);
 int64_t	is_hungry_funcp(t_data *data);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
-void	actions(t_data *data, int action, int64_t sleeptime, void (*printer)());
-void	print_status(t_data *data, int action, void (*printer)());
-void	eat_print(t_data *data, int idx);
-void	wrap_printf(t_data *data, int idx);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
+void	actions(t_data *data, int action, int64_t sleeptime, void (*printer)());
+void	print_status(t_data *data, int action, void (*printer)());
+void	wrap_printf(t_data *data, int idx);
+void	eat_print(t_data *d, int idx);
 void	*start_philo(void *arg);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
