@@ -2,7 +2,7 @@
 
 void	*start_philo(void *arg)
 {
-	if (num_of_phi(arg) == 1)
+	if (((t_data *)arg)->phi->num_of_phi == 1)
 		return (NULL);
 	forks_init(arg);
 	while (is_living(arg) && is_hungry(arg))
