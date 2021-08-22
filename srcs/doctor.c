@@ -11,7 +11,7 @@ void	*doctor(void *arg)
 		if (within_deadline(data))
 		{
 			i_have_died(data);
-			print_status(data, DIE, data->now);
+			print_status(data, DIE, wrap_printf);
 			break ;
 		}
 		usleep(1000);

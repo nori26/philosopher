@@ -2,10 +2,7 @@
 
 void	eating(t_data *data)
 {
-	int64_t	now;
-
-	now = start_time_init(data);
-	actions(data, EAT, data->phi->eat, now);
+	actions(data, EAT, data->phi->eat, eat_print);
 	inc_eatcount(data);
 }
 

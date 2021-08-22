@@ -2,12 +2,12 @@
 
 void	*start_philo(void *arg)
 {
-	t_thinkfunc	thinking;
+	// t_thinkfunc	thinking;
 
 	if (((t_data *)arg)->phi->num_of_phi == 1)
 		return (NULL);
 	forks_init(arg);
-	thinking = select_thinking(arg);
+	// thinking = select_thinking(arg);
 	while (is_living(arg) && is_hungry(arg))
 	{
 		get_forks(arg);
@@ -19,7 +19,7 @@ void	*start_philo(void *arg)
 	return (NULL);
 }
 
-t_thinkfunc	select_thinking(t_data *data)
-{
-	return ((t_thinkfunc[2]){think, think_odd}[data->phi->num_of_phi % 2]);
-}
+// t_thinkfunc	select_thinking(t_data *data)
+// {
+// 	return ((t_thinkfunc[2]){think, think_odd}[data->phi->num_of_phi % 2]);
+// }

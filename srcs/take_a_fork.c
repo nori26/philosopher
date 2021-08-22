@@ -32,5 +32,5 @@ void	release_forks(t_data *data)
 
 void	take_a_fork(t_data *data)
 {
-	actions(data, FORK, 0, get_msec());
+	actions(data, FORK, 0, wrap_printf);
 }
