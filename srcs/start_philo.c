@@ -24,7 +24,7 @@ int64_t	num_of_phi(t_data *data)
 	return (mtx_do_func(&data->phi->num_of_phi, &data->mtxnum, ret_arg));
 }
 
-t_think	thinking_func(t_data *data)
+t_think	select_thinking_func(t_data *data)
 {
 	return ((t_think[2]){think, think_odd}[data->phi->num_of_phi % 2]);
 }
