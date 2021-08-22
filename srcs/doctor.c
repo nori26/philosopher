@@ -8,7 +8,7 @@ void	*doctor(void *arg)
 	while (is_living(data) && is_hungry(data))
 	{
 		data->now = get_msec();
-		if (within_deadline(data))
+		if (over_deadline(data))
 		{
 			i_have_died(data);
 			print_status(data, DIE, wrap_printf);
@@ -19,7 +19,7 @@ void	*doctor(void *arg)
 	return (NULL);
 }
 
-int64_t	within_deadline(t_data *data)
+int64_t	over_deadline(t_data *data)
 {
 	return (mtx_do_func(data, &data->mtxstart, check_deadline));
 }

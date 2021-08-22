@@ -74,7 +74,7 @@ int64_t	ret_arg(int64_t *arg);
 void	i_have_died(t_data *data);
 int64_t	set_flag(int64_t *flag);
 void	*doctor(void *arg);
-int64_t	within_deadline(t_data *data);
+int64_t	over_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
 void	eating(t_data *data);
 int64_t	start_time_init(t_data *data);
