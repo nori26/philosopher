@@ -14,9 +14,7 @@
 # define BLUE   "\x1b[34m"
 # define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
-typedef struct s_data	t_data;
 typedef struct s_list	t_list;
-typedef void			(*t_thinkfunc)(t_data *);
 struct		s_list
 {
 	void	*content;
@@ -37,7 +35,7 @@ typedef struct s_phi
 	int32_t			width;
 	char			*format[5];
 }t_phi;
-struct s_data
+typedef struct s_data
 {
 	t_phi			*phi;
 	pthread_t		th;
@@ -56,7 +54,7 @@ struct s_data
 	pthread_mutex_t	mtxdied;
 	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
-};
+}t_data;
 enum	e_status
 {
 	FORK,
