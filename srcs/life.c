@@ -5,11 +5,15 @@ void	sleeping(t_data *data)
 	actions(data, SLEEP, data->phi->sleep, get_msec());
 }
 
-void	thinking(t_data *data)
+void	think(t_data *data)
 {
 	actions(data, THINK, 0, get_msec());
-	if (data->phi->num_of_phi % 2)
-		mymsleep(data->phi->eat);
+}
+
+void	think_odd(t_data *data)
+{
+	think(data);
+	mymsleep(data->phi->eat);
 }
 
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now)

@@ -14,6 +14,7 @@
 # define BLUE   "\x1b[34m"
 # define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
+typedef struct s_data	t_data;
 typedef struct s_list	t_list;
 struct		s_list
 {
@@ -34,7 +35,7 @@ typedef struct s_phi
 	pthread_mutex_t	output;
 	char			*format[5];
 }t_phi;
-typedef struct s_data
+struct s_data
 {
 	t_phi			*phi;
 	int64_t			num;
@@ -53,7 +54,7 @@ typedef struct s_data
 	pthread_mutex_t	mtxdied;
 	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
-}t_data;
+};
 enum	e_status
 {
 	FORK,
@@ -84,7 +85,8 @@ void	exit_philo(t_data *data, t_phi *philo);
 int64_t	is_hungry(t_data *data);
 int64_t	is_hungry_funcp(t_data *data);
 void	sleeping(t_data *data);
-void	thinking(t_data *data);
+void	think(t_data *data);
+void	think_odd(t_data *data);
 void	actions(t_data *data, int action, int64_t sleeptime, int64_t now);
 void	print_status(t_data *data, int idx, int64_t msec);
 int32_t	philo_init(t_phi **philo);
@@ -93,6 +95,7 @@ int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	*start_philo(void *arg);
 int64_t	num_of_phi(t_data *data);
+t_think	thinking_func(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);

@@ -94,13 +94,28 @@ int odd_ones(unsigned x)
 	x = x ^ (x >> 2);
 	return ((x ^ (x >> 1)) & 1);
 }
+int add(int a, int b) { 
+    return a + b;
+}
+
+int sub(int a, int b) {
+    return a - b;
+}
+
+int mul(int a, int b) {
+    return a * b;
+}
 
 int main(int argc, char **argv)
 {
 	(void)argc;
-	int i = 7;
-	int n = **++argv - '0';
+	(void)argv;
+	// int i = 7;
+	// int n = **++argv - '0';
 
-	printf("%d\n", (n - !(n % 2)) % i);
-	printf("%d\n", (n - (n % 2)) % i);
+	// printf("%d\n", (n - !(n % 2)) % i);
+	// printf("%d\n", (n - (n % 2)) % i);
+    int (*p)(int, int);
+    p = (int (*[3])(int, int)){add, sub, mul}[0];
+    printf("%d\n", p(1, 2));
 }
