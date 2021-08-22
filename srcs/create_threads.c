@@ -2,14 +2,16 @@
 
 int	create_threads(t_data *data, t_phi *philo)
 {
-	int64_t		i;
+	int64_t	i;
+	t_func	run_simulation;
 
+	run_simulation = (t_func[2]){philosopher, nop}[philo->num_of_phi == 1];
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
 		data_init(&data[i], i, philo);
 		if (pthread_create(&data[i].th, NULL, doctor, &data[i])
-			|| pthread_create(&data[i].th2, NULL, start_philo, &data[i]))
+			|| pthread_create(&data[i].th2, NULL, run_simulation, &data[i]))
 			return (1);
 		i++;
 	}

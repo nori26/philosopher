@@ -1,9 +1,7 @@
 #include "philo.h"
 
-void	*start_philo(void *arg)
+void	*philosopher(void *arg)
 {
-	if (((t_data *)arg)->phi->num_of_phi == 1)
-		return (NULL);
 	delay_if_even(arg);
 	forks_init(arg);
 	while (is_living(arg) && is_hungry(arg))
@@ -21,4 +19,9 @@ void	delay_if_even(t_data *data)
 {
 	if (!(data->num % 2))
 		usleep(1000);
+}
+
+void	*nop(void *arg)
+{
+	return (arg);
 }

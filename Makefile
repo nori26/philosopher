@@ -15,10 +15,10 @@ SRCS	=\
 	./srcs/exit.c\
 	./srcs/hugry.c\
 	./srcs/main.c\
+	./srcs/philosopher.c\
 	./srcs/philo_init.c\
 	./srcs/print.c\
 	./srcs/sleep_think.c\
-	./srcs/start_philo.c\
 	./srcs/take_a_fork.c\
 	./libph/count_digits.c\
 	./libph/ft_atoi_err.c\

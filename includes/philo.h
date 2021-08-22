@@ -21,6 +21,7 @@
 # define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
 typedef struct s_list	t_list;
+typedef void			*(*t_func)(void *);
 struct		s_list
 {
 	void	*content;
@@ -90,6 +91,9 @@ int64_t	inc_eatcount_func(t_data *data);
 void	exit_philo(t_data *data, t_phi *philo);
 int64_t	is_hungry(t_data *data);
 int64_t	is_hungry_funcp(t_data *data);
+void	*philosopher(void *arg);
+void	delay_if_even(t_data *data);
+void	*nop(void *arg);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
@@ -100,8 +104,6 @@ void	wrap_printf(t_data *data, int idx);
 void	eat_print(t_data *d, int idx);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
-void	*start_philo(void *arg);
-void	wait_even(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);

@@ -106,10 +106,7 @@ int mul(int a, int b) {
     return a * b;
 }
 
-void    p(int (*f)())
-{
-    f("%daiueo\n", 1);
-}
+
 
 int main(int argc, char **argv)
 {
@@ -120,5 +117,7 @@ int main(int argc, char **argv)
 
 	// printf("%d\n", (n - !(n % 2)) % i);
 	// printf("%d\n", (n - (n % 2)) % i);
-    p(printf);
+    int (*p)(int, int);
+    p = (int (*[3])()){add, sub, mul}[0];
+    printf("%d\n", p(1, 2));
 }
