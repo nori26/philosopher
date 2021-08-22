@@ -50,7 +50,8 @@ fclean	: clean
 re		: fclean all
 
 add		:
-	bash header.sh "$(SRCDIR) $(LIBDIR)" $(INCLUDE)/philo.h
+	bash header.sh "$(SRCDIR)" $(INCLUDE)/philo.h
+	bash header.sh "$(LIBDIR)" $(INCLUDE)/libph.h
 	bash make.sh "$(SRCDIR) $(LIBDIR)" SRCS
 
 norm	:

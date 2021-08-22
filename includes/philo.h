@@ -7,6 +7,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include "libph.h"
 # define GREEN  "\x1b[32m"
 # define RED    "\x1b[31m"
 # define YELLOW "\x1b[33m"
@@ -103,11 +104,5 @@ int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);
 void	release_forks(t_data *data);
 void	take_a_fork(t_data *data);
-int		count_digits(int64_t n);
-int		ft_atol_err(char *s, int64_t *i);
-int64_t	get_msec(void);
-int64_t	get_usec(void);
-int64_t	mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)());
-void	mymsleep(int64_t msec);
 
 #endif
