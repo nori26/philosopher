@@ -6,11 +6,16 @@ int32_t	philo_init(t_phi **philo)
 	if (!*philo)
 		return (1);
 	**philo = (t_phi){
-		.format[0] = YELLOW"%ld %*ld has taken a fork\n"RESET,
-		.format[1] = GREEN"%ld %*ld is eating\n"RESET,
-		.format[2] = CYAN"%ld %*ld is sleeping\n"RESET,
+		// .format[0] = YELLOW"%ld %*ld has taken a fork\n"RESET,
+		// .format[1] = GREEN"%ld %*ld is eating\n"RESET,
+		// .format[2] = CYAN"%ld %*ld is sleeping\n"RESET,
+		// .format[3] = "%ld %*ld is thinking\n",
+		.format[4] = "%ld %*ld died\n",
+		.format[0] = "%ld %*ld has taken a fork\n",
+		.format[1] = "%ld %*ld is eating\n",
+		.format[2] = "%ld %*ld is sleeping\n",
 		.format[3] = "%ld %*ld is thinking\n",
-		.format[4] = RED"%ld %*ld died\n"RESET,
+		.format[4] = "%ld %*ld died\n",
 		.times = -1
 	};
 	return (0);
