@@ -16,6 +16,7 @@
 typedef struct timeval	t_time;
 typedef struct s_data	t_data;
 typedef struct s_list	t_list;
+typedef void			(*t_think)(struct s_data *);
 struct		s_list
 {
 	void	*content;
