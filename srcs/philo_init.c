@@ -39,7 +39,7 @@ int	philo_utils_init(t_data **data, t_phi *philo)
 	if (!*data || !philo->forks)
 		return (1);
 	mtx_init_philo(philo);
-	// philo->width = count_digits(philo->num_of_phi);
+	philo->width = count_digits(philo->num_of_phi);
 	philo->think_time = (int64_t [2]){0, philo->eat}[philo->num_of_phi % 2];
 	return (0);
 }

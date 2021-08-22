@@ -7,18 +7,18 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
-# define GREEN 
-# define RED   
-# define YELLOW
-# define CYAN  
-# define BLUE  
-# define RESET 
-// # define GREEN  "\x1b[32m"
-// # define RED    "\x1b[31m"
-// # define YELLOW "\x1b[33m"
-// # define CYAN   "\x1b[36m"
-// # define BLUE   "\x1b[34m"
-// # define RESET  "\x1b[39m"
+// # define GREEN 
+// # define RED   
+// # define YELLOW
+// # define CYAN  
+// # define BLUE  
+// # define RESET 
+# define GREEN  "\x1b[32m"
+# define RED    "\x1b[31m"
+# define YELLOW "\x1b[33m"
+# define CYAN   "\x1b[36m"
+# define BLUE   "\x1b[34m"
+# define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
 typedef struct s_list	t_list;
 struct		s_list
