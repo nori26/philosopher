@@ -4,8 +4,7 @@ void	*start_philo(void *arg)
 {
 	if (((t_data *)arg)->phi->num_of_phi == 1)
 		return (NULL);
-	if (!(((t_data *)arg)->num % 2))
-		usleep(1000);
+	wait_even(arg);
 	forks_init(arg);
 	while (is_living(arg) && is_hungry(arg))
 	{
@@ -16,4 +15,10 @@ void	*start_philo(void *arg)
 		thinking(arg);
 	}
 	return (NULL);
+}
+
+void	wait_even(t_data *data)
+{
+	if (!(data->num % 2))
+		usleep(1000);
 }

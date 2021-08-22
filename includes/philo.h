@@ -101,6 +101,7 @@ void	eat_print(t_data *d, int idx);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
 void	*start_philo(void *arg);
+void	wait_even(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);
