@@ -5,8 +5,8 @@ int	create_threads(t_data *data, t_phi *philo)
 	int64_t	i;
 	t_func	run_simulation;
 
-	run_simulation = (t_func[2]){philosopher, nop}[philo->num_of_phi == 1];
 	i = 0;
+	run_simulation = (t_func[2]){philosopher, nop}[philo->num_of_phi == 1];
 	while (i < philo->num_of_phi)
 	{
 		data_init(&data[i], i, philo);
