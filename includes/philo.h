@@ -7,12 +7,6 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
-// # define GREEN 
-// # define RED   
-// # define YELLOW
-// # define CYAN  
-// # define BLUE  
-// # define RESET 
 # define GREEN  "\x1b[32m"
 # define RED    "\x1b[31m"
 # define YELLOW "\x1b[33m"
