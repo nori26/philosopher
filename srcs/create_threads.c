@@ -6,7 +6,7 @@ int	create_threads(t_data *data, t_phi *philo)
 	t_func	run_simulation;
 
 	i = 0;
-	run_simulation = (t_func[2]){philosopher, nop}[philo->num_of_phi == 1];
+	run_simulation = select_simulation(philo);
 	while (i < philo->num_of_phi)
 	{
 		data_init(&data[i], i, philo);
@@ -16,6 +16,11 @@ int	create_threads(t_data *data, t_phi *philo)
 		i++;
 	}
 	return (0);
+}
+
+t_func	select_simulation(t_phi *philo)
+{
+	return ((t_func[2]){philosopher, nop}[philo->num_of_phi == 1]);
 }
 
 void	data_init(t_data *data, int64_t idx, t_phi *philo)
