@@ -29,21 +29,21 @@ typedef struct s_phi
 	int64_t			eat;
 	int64_t			sleep;
 	int64_t			times;
+	int64_t			end_of_simulation;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	eos;
-	int32_t			width;
-	int64_t			end_of_simulation;
 	pthread_mutex_t	output;
+	int32_t			width;
 	char			*format[5];
 }t_phi;
 struct s_data
 {
 	t_phi			*phi;
-	int64_t			num;
 	pthread_t		th;
 	pthread_t		th2;
 	int32_t			status[5];
 	int32_t			idx[2];
+	int64_t			num;
 	int64_t			start;
 	int64_t			died;
 	int64_t			now;
