@@ -16,6 +16,7 @@
 typedef struct timeval	t_time;
 typedef struct s_data	t_data;
 typedef struct s_list	t_list;
+typedef void			(*t_think)(struct s_data *);
 struct		s_list
 {
 	void	*content;
@@ -95,7 +96,6 @@ int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	*start_philo(void *arg);
 int64_t	num_of_phi(t_data *data);
-t_think	thinking_func(t_data *data);
 void	forks_init(t_data *data);
 int		calc_idx(int64_t n, int64_t max, int offset);
 void	get_forks(t_data *data);
