@@ -48,10 +48,12 @@ all		: $(NAME)
 
 $(OBJDIR)/%.o : %.c
 	@if [ ! -d $(OBJDIR) ];then mkdir $(OBJDIR); fi
-	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@ && echo "	"$@
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+	@echo -e "	""\033[1;32m$@\033[0;39m"
 
 $(NAME)	: $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@ && echo -e "\nGenerated\n	"$@
+	@$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@
+	@echo -e "\nGenerated\n	""\033[1;32m$@\033[0;39m"
 
 clean	: rm_reloc
 	@make b_clean WITH_BONUS=1
