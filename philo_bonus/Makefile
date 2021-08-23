@@ -1,4 +1,4 @@
-NAME		= philo
+NAME		= philo_bonus
 SHELL		= /bin/bash
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -MMD -MP
@@ -9,18 +9,7 @@ OBJDIR		= ./obj
 INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
-	./srcs/create_threads.c\
-	./srcs/died.c\
-	./srcs/doctor.c\
-	./srcs/eat.c\
-	./srcs/exit.c\
-	./srcs/hungry.c\
 	./srcs/main.c\
-	./srcs/philosopher.c\
-	./srcs/philo_init.c\
-	./srcs/print.c\
-	./srcs/sleep_think.c\
-	./srcs/take_a_fork.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\
@@ -31,7 +20,6 @@ LIBSRCS	=\
 	./libph/mymsleep.c\
 
 B_SRCS	=\
-	./srcs_bonus/main_bonus.c\
 
 OBJS	= $(shell basename -a $(SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a $(SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
@@ -81,7 +69,7 @@ add		:
 	bash header.sh "$(LIBDIR)" $(INCLUDE)/libph.h
 	bash make.sh "$(SRCDIR)" SRCS
 	bash make.sh "$(LIBDIR)" LIBSRCS
-	bash make.sh "$(B_SRCDIR)" B_SRCS
+#bash make.sh "$(B_SRCDIR)" B_SRCS
 
 norm	:
 	@norminette | grep -v ': OK!' || \
