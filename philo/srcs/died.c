@@ -12,8 +12,7 @@ int64_t	is_dead(t_data *data)
 
 int64_t	dead_func(t_data *data)
 {
-	return (data->phi->end_of_simulation
-		+ mtx_do_func(&data->died, &data->mtxdied, ret_arg));
+	return (data->phi->end_of_simulation + data->died);
 }
 
 void	died_notice(t_data *data)
@@ -23,8 +22,8 @@ void	died_notice(t_data *data)
 
 int64_t	notice_func(t_data *data)
 {
-	set_flag(&data->phi->end_of_simulation);
-	mtx_do_func(&data->died, &data->mtxdied, set_flag);
+	data->died = 1;
+	data->phi->end_of_simulation = 1;
 	usleep(1000);
 	print_status(data, DIE, wrap_printf);
 	return (0);

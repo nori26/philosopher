@@ -30,17 +30,17 @@ LIBSRCS	=\
 	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
 
-B_SRCS	=\
+# B_SRCS	=\
 
 
 OBJS	= $(shell basename -a $(SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a $(SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 
-ifdef WITH_BONUS
-NAME	= philo_bonus
-OBJS	= $(shell basename -a $(B_SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
-DEPENDS	= $(shell basename -a $(B_SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
-endif
+# ifdef WITH_BONUS
+# NAME	= philo_bonus
+# OBJS	= $(shell basename -a $(B_SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+# DEPENDS	= $(shell basename -a $(B_SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+# endif
 
 all		: $(NAME)
 
@@ -56,13 +56,13 @@ $(NAME)	: $(OBJS)
 	@echo -e "\n\033[1;35m Generated\n	\033[0;39m\033[1;32m$@\033[0;39m"
 
 clean	: rm_reloc
-	@make b_clean WITH_BONUS=1
+#	@make b_clean WITH_BONUS=1
 
 fclean	: clean rm_exec
-	@make b_fclean WITH_BONUS=1
+#	@make b_fclean WITH_BONUS=1
 
-bonus	:
-	@make WITH_BONUS=1
+# bonus	:
+# 	@make WITH_BONUS=1
 
 b_clean	: rm_reloc
 
