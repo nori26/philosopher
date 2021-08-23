@@ -53,7 +53,7 @@ $(OBJDIR)/%.o : %.c
 
 $(NAME)	: $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@
-	@echo -e "\nGenerated\n	""\033[1;32m$@\033[0;39m"
+	@echo -e "\n\033[1;35m Generated\n	\033[0;39m\033[1;32m$@\033[0;39m"
 
 clean	: rm_reloc
 	@make b_clean WITH_BONUS=1
