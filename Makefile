@@ -48,26 +48,28 @@ all		: $(NAME)
 
 $(OBJDIR)/%.o : %.c
 	@if [ ! -d $(OBJDIR) ];then mkdir $(OBJDIR); fi
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@ && echo "	"$@
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@ && echo -e "\nGenerated\n	"$@
 
-clean	:
-	$(RM) $(OBJS) $(DEPENDS)
-	make b_clean WITH_BONUS=1
+clean	: rm_reloc
+	@make b_clean WITH_BONUS=1
 
-fclean	: clean
-	$(RM) $(NAME)
-	make b_fclean WITH_BONUS=1
+fclean	: clean rm_exec
+	@make b_fclean WITH_BONUS=1
 
 bonus	:
-	make WITH_BONUS=1
+	@make WITH_BONUS=1
 
-b_clean	:
+b_clean	: rm_reloc
+
+b_fclean: rm_exec
+
+rm_reloc:
 	$(RM) $(OBJS) $(DEPENDS)
 
-b_fclean:
+rm_exec	:
 	$(RM) $(NAME)
 
 re		: fclean all
@@ -83,4 +85,4 @@ norm	:
 	@norminette | grep -v ': OK!' || \
 	printf '\x1b[1m\x1b[32m%s\x1b[39m\x1b[0m\n' 'Norm: OK!';
 
-.PHONY	: all clean fclean re bonus add norm
+.PHONY	: all clean fclean re bonus add norm rm_exec rm_reloc b_clean b_fclean
