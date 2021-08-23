@@ -10,8 +10,7 @@ void	*doctor(void *arg)
 		data->now = get_msec();
 		if (over_deadline(data))
 		{
-			i_have_died(data);
-			print_status(data, DIE, wrap_printf);
+			died_notice(data);
 			break ;
 		}
 		usleep(1000);
