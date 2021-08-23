@@ -37,7 +37,6 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo)
 void	mtx_init_data(t_data *data)
 {
 	pthread_mutex_init(&data->mtxstart, NULL);
-	pthread_mutex_init(&data->mtxdied, NULL);
 	pthread_mutex_init(&data->mtxeatcount, NULL);
 	pthread_mutex_init(&data->mtxnum, NULL);
 }

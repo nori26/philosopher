@@ -53,7 +53,6 @@ typedef struct s_data
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
-	pthread_mutex_t	mtxdied;
 	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
 }t_data;
