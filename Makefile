@@ -1,12 +1,13 @@
-NAME	= philo
-SHELL	= /bin/bash
-CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP
-SRCDIR	= ./srcs
-LIBDIR	= ./libph
-OBJDIR	= ./obj
-INCLUDE	= ./includes
-VPATH	= $(SRCDIR):$(LIBDIR)
+NAME		= philo
+SHELL		= /bin/bash
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra -MMD -MP
+SRCDIR		= ./srcs
+LIBDIR		= ./libph
+B_SRCDIR	= ./srcs_bonus
+OBJDIR		= ./obj
+INCLUDE		= ./includes
+VPATH		= $(SRCDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
 	./srcs/create_threads.c\
 	./srcs/died.c\
@@ -29,8 +30,17 @@ LIBSRCS	=\
 	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
 
+B_SRCS	=\
+	./srcs_bonus/main_bonus.c\
+
 OBJS	= $(shell basename -a $(SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
 DEPENDS	= $(shell basename -a $(SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+
+ifdef WITH_BONUS
+NAME	= philo_bonus
+OBJS	= $(shell basename -a $(B_SRCS:.c=.o) $(LIBSRCS:.c=.o) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+DEPENDS	= $(shell basename -a $(B_SRCS:.c=.d) $(LIBSRCS:.c=.d) | awk -v o=$(OBJDIR) '{print o"/"$$0}')
+endif
 
 all		: $(NAME)
 
@@ -44,9 +54,20 @@ $(NAME)	: $(OBJS)
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(OBJS) -lpthread -o $@
 
 clean	:
-	$(RM) $(OBJS) $(B_OBJS) $(DEPENDS)
+	$(RM) $(OBJS) $(DEPENDS)
+	make b_clean WITH_BONUS=1
 
 fclean	: clean
+	$(RM) $(NAME)
+	make b_fclean WITH_BONUS=1
+
+bonus	:
+	make WITH_BONUS=1
+
+b_clean	:
+	$(RM) $(OBJS) $(DEPENDS)
+
+b_fclean:
 	$(RM) $(NAME)
 
 re		: fclean all
@@ -56,6 +77,7 @@ add		:
 	bash header.sh "$(LIBDIR)" $(INCLUDE)/libph.h
 	bash make.sh "$(SRCDIR)" SRCS
 	bash make.sh "$(LIBDIR)" LIBSRCS
+	bash make.sh "$(B_SRCDIR)" B_SRCS
 
 norm	:
 	@norminette | grep -v ': OK!' || \
