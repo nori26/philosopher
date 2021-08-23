@@ -2,7 +2,8 @@
 
 void	actions(t_data *data, int action, int64_t sleeptime, void (*printer)())
 {
-	if (is_dead(data) || !is_hungry(data))
+	if (!is_hungry(data) || is_dead(data))
+	// if (is_dead(data) || !is_hungry(data))
 		return ;
 	print_status(data, action, printer);
 	mymsleep(sleeptime);
