@@ -13,7 +13,7 @@ SRCS	=\
 	./srcs/doctor.c\
 	./srcs/eat.c\
 	./srcs/exit.c\
-	./srcs/hugry.c\
+	./srcs/hungry.c\
 	./srcs/main.c\
 	./srcs/philosopher.c\
 	./srcs/philo_init.c\
