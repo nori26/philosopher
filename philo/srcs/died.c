@@ -22,8 +22,6 @@ void	died_notice(t_data *data)
 
 int64_t	notice_func(t_data *data)
 {
-	if (data->phi->end_of_simulation)
-		return (0);
 	data->died = 1;
 	data->phi->end_of_simulation = 1;
 	usleep(1000);
