@@ -4,7 +4,7 @@ void	*philosopher(void *arg)
 {
 	delay_if_even(arg);
 	forks_init(arg);
-	while (is_living(arg) && is_hungry(arg))
+	while (is_alive(arg) && is_hungry(arg))
 	{
 		get_forks(arg);
 		eating(arg);

@@ -5,7 +5,7 @@ void	*doctor(void *arg)
 	t_data	*data;
 
 	data = arg;
-	while (is_living(data) && is_hungry(data))
+	while (is_alive(data) && is_hungry(data))
 	{
 		data->now = get_msec();
 		if (over_deadline(data))

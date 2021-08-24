@@ -1,6 +1,6 @@
 #include "philo.h"
 
-int64_t	is_living(t_data *data)
+int64_t	is_alive(t_data *data)
 {
 	return (!is_dead(data));
 }

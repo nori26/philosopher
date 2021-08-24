@@ -70,7 +70,7 @@ t_func	select_simulation(t_phi *philo);
 void	data_init(t_data *data, int64_t idx, t_phi *philo);
 void	mtx_init_data(t_data *data);
 int		wait_end_of_simulation(t_data *data);
-int64_t	is_living(t_data *data);
+int64_t	is_alive(t_data *data);
 int64_t	is_dead(t_data *data);
 int64_t	dead_func(t_data *data);
 void	died_notice(t_data *data);
