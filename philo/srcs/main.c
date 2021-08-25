@@ -3,12 +3,12 @@
 int	main(int argc, char **argv)
 {
 	int		ret;
-	t_phi	*philo;
 	t_data	*data;
+	t_phi	*philo;
 
 	ret = 0;
-	philo = NULL;
 	data = NULL;
+	philo = NULL;
 	if ((argc != 5 && argc != 6)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo)
