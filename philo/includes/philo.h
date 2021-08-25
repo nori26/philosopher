@@ -53,6 +53,11 @@ typedef struct s_data
 	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
 }t_data;
+typedef struct s_print
+{
+	t_data	*data;
+	int		action;
+}t_print;
 enum	e_status
 {
 	FORK,
@@ -95,9 +100,9 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	actions(t_data *data, int action, int64_t sleeptime);
-int		print_status(t_data *data, int action);
-int		print(t_data *data, int idx);
-int64_t	timestamp(t_data *data, int idx);
+int64_t	print_status(t_print p);
+int64_t	print_func(t_print *p);
+int64_t	timestamp(t_data *data, int action);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
 void	forks_init(t_data *data);

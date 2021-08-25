@@ -18,12 +18,12 @@ int64_t	ret_arg(int64_t	*arg)
 void	died_notice(t_data *data)
 {
 	mtx_do_func(data, &data->phi->output, notice_func);
-	print_status(data, DIE);
 }
 
 int64_t	notice_func(t_data *data)
 {
-	print(data, DIE);
+	// print(data, DIE);
+	print_func(&(t_print){data, DIE});
 	data->phi->dead = 1;
 	return (0);
 }

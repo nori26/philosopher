@@ -2,33 +2,28 @@
 
 void	actions(t_data *data, int action, int64_t sleeptime)
 {
-	if (print_status(data, action))
+	if (print_status((t_print){data, action}))
 		return ;
 	mymsleep(sleeptime);
 }
 
-int	print_status(t_data *data, int action)
+int64_t	print_status(t_print p)
 {
-	int	ret;
-
-	pthread_mutex_lock(&data->phi->output);
-	ret = print(data, action);
-	pthread_mutex_unlock(&data->phi->output);
-	return (ret);
+	return (mtx_do_func(&p, &p.data->phi->output, print_func));
 }
 
-int	print(t_data *data, int idx)
+int64_t	print_func(t_print *p)
 {
-	if (data->phi->dead || !is_hungry(data))
+	if (p->data->phi->dead || !is_hungry(p->data))
 		return (1);
-	printf(data->phi->format[idx],
-		timestamp(data, idx), data->phi->width, data->num);
+	printf(p->data->phi->format[p->action],
+		timestamp(p->data, p->action), p->data->phi->width, p->data->num);
 	return (0);
 }
 
-int64_t	timestamp(t_data *data, int idx)
+int64_t	timestamp(t_data *data, int action)
 {
-	if (idx == EAT)
+	if (action == EAT)
 		return (start_time_init(data));
 	else
 		return (get_msec());
