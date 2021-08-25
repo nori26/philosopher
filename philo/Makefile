@@ -21,7 +21,6 @@ SRCS	=\
 	./srcs/print_actions.c\
 	./srcs/sleep_think.c\
 	./srcs/take_a_fork.c\
-	./srcs/wait_threads.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\
