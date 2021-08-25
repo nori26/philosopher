@@ -33,8 +33,6 @@ typedef struct s_phi
 	int64_t			think_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	output;
-	// pthread_mutex_t	mtxdead;
-	// pthread_mutex_t	end_of_simulation;
 	int32_t			width;
 	char			*format[5];
 }t_phi;

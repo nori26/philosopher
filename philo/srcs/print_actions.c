@@ -21,7 +21,8 @@ int	print(t_data *data, int idx)
 {
 	if (data->phi->dead || !is_hungry(data))
 		return (1);
-	printf(data->phi->format[idx], timestamp(data, idx), data->phi->width, data->num);
+	printf(data->phi->format[idx],
+		timestamp(data, idx), data->phi->width, data->num);
 	return (0);
 }
 
