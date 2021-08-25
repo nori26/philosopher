@@ -17,7 +17,7 @@ void	died_notice(t_data *data)
 
 int64_t	notice_func(t_data *data)
 {
-	print_func(&(t_print){data, DIE});
+	print(&(t_print){data, DIE});
 	data->phi->dead = 1;
 	return (0);
 }

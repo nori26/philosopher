@@ -101,7 +101,7 @@ int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	actions(t_data *data, int action, int64_t sleeptime);
 int64_t	print_status(t_print p);
-int64_t	print_func(t_print *p);
+int64_t	print(t_print *p);
 int64_t	timestamp(t_data *data, int action);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);

@@ -9,10 +9,10 @@ void	actions(t_data *data, int action, int64_t sleeptime)
 
 int64_t	print_status(t_print p)
 {
-	return (mtx_do_func(&p, &p.data->phi->output, print_func));
+	return (mtx_do_func(&p, &p.data->phi->output, print));
 }
 
-int64_t	print_func(t_print *p)
+int64_t	print(t_print *p)
 {
 	if (p->data->phi->dead || !is_hungry(p->data))
 		return (1);
