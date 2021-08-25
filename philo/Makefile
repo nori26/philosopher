@@ -3,21 +3,22 @@ SHELL		= /bin/bash
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -MMD -MP
 SRCDIR		= ./srcs
+SRCSUBDIR	= ./srcs/main_thread
 LIBDIR		= ./libph
 B_SRCDIR	= ./srcs_bonus
 OBJDIR		= ./obj
 INCLUDE		= ./includes
-VPATH		= $(SRCDIR):$(LIBDIR):$(B_SRCDIR)
+VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
-	./srcs/create_threads.c\
 	./srcs/died.c\
 	./srcs/doctor.c\
 	./srcs/eat.c\
-	./srcs/exit.c\
 	./srcs/hungry.c\
-	./srcs/main.c\
+	./srcs/main_thread/create_threads.c\
+	./srcs/main_thread/exit.c\
+	./srcs/main_thread/main.c\
+	./srcs/main_thread/philo_init.c\
 	./srcs/philosopher.c\
-	./srcs/philo_init.c\
 	./srcs/print_actions.c\
 	./srcs/sleep_think.c\
 	./srcs/take_a_fork.c\
