@@ -15,13 +15,7 @@
 # define BLUE   "\x1b[34m"
 # define RESET  "\x1b[39m"
 typedef struct timeval	t_time;
-typedef struct s_list	t_list;
 typedef void			*(*t_func)(void *);
-struct		s_list
-{
-	void	*content;
-	t_list	*next;
-};
 typedef struct s_phi
 {
 	int64_t			num_of_phi;
