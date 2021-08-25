@@ -66,11 +66,6 @@ enum	e_status
 	THINK,
 	DIE
 };
-enum	e_idx
-{
-	PH,
-	DC
-};
 
 int		create_threads(t_data *data, t_phi *philo);
 t_func	select_simulation(t_phi *philo);
