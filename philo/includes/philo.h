@@ -41,7 +41,6 @@ typedef struct s_data
 	t_phi			*phi;
 	pthread_t		thd;
 	pthread_t		thp;
-	int32_t			status[5];
 	int64_t			num;
 	int64_t			start;
 	int64_t			now;
