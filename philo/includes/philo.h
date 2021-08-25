@@ -29,24 +29,23 @@ typedef struct s_phi
 	int64_t			eat;
 	int64_t			sleep;
 	int64_t			times;
-	int64_t			end_of_simulation;
+	int64_t			dead;
 	int64_t			think_time;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	eos;
 	pthread_mutex_t	output;
+	// pthread_mutex_t	mtxdead;
+	// pthread_mutex_t	end_of_simulation;
 	int32_t			width;
 	char			*format[5];
 }t_phi;
 typedef struct s_data
 {
 	t_phi			*phi;
-	pthread_t		th;
-	pthread_t		th2;
+	pthread_t		thd;
+	pthread_t		thp;
 	int32_t			status[5];
-	int32_t			idx[2];
 	int64_t			num;
 	int64_t			start;
-	int64_t			died;
 	int64_t			now;
 	int64_t			eatmax;
 	int64_t			eatcount;
@@ -64,6 +63,11 @@ enum	e_status
 	THINK,
 	DIE
 };
+enum	e_idx
+{
+	PH,
+	DC
+};
 
 int		create_threads(t_data *data, t_phi *philo);
 t_func	select_simulation(t_phi *philo);
@@ -71,8 +75,7 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo);
 void	mtx_init_data(t_data *data);
 int		wait_end_of_simulation(t_data *data);
 int64_t	is_alive(t_data *data);
-int64_t	is_dead(t_data *data);
-int64_t	dead_func(t_data *data);
+int64_t	ret_arg(int64_t	*arg);
 void	died_notice(t_data *data);
 int64_t	notice_func(t_data *data);
 void	*doctor(void *arg);
@@ -93,10 +96,10 @@ int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
-void	actions(t_data *data, int action, int64_t sleeptime, void (*printer)());
-void	print_status(t_data *data, int action, void (*printer)());
-void	wrap_printf(t_data *data, int idx);
-void	eat_print(t_data *d, int idx);
+void	actions(t_data *data, int action, int64_t sleeptime);
+int		print_status(t_data *data, int action);
+int		print(t_data *data, int idx);
+int64_t	timestamp(t_data *data, int idx);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
 void	forks_init(t_data *data);

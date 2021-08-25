@@ -48,7 +48,6 @@ void	mtx_init_philo(t_phi *philo)
 {
 	int64_t	i;
 
-	pthread_mutex_init(&philo->eos, NULL);
 	pthread_mutex_init(&philo->output, NULL);
 	i = 0;
 	while (i < philo->num_of_phi)

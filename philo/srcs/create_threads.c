@@ -10,8 +10,8 @@ int	create_threads(t_data *data, t_phi *philo)
 	while (i < philo->num_of_phi)
 	{
 		data_init(&data[i], i, philo);
-		if (pthread_create(&data[i].th, NULL, doctor, &data[i])
-			|| pthread_create(&data[i].th2, NULL, run_simulation, &data[i]))
+		if (pthread_create(&data[i].thp, NULL, run_simulation, &data[i])
+			|| pthread_create(&data[i].thd, NULL, doctor, &data[i]))
 			return (1);
 		i++;
 	}
@@ -47,7 +47,8 @@ int	wait_end_of_simulation(t_data *data)
 
 	i = 0;
 	while (i < data->phi->num_of_phi)
-		if (pthread_join(data[i].th, NULL) || pthread_join(data[i++].th2, NULL))
+		if (pthread_join(data[i].thd, NULL)
+			|| pthread_join(data[i++].thp, NULL))
 			return (1);
 	return (0);
 }

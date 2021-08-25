@@ -1,26 +1,34 @@
 #include "philo.h"
 
-void	actions(t_data *data, int action, int64_t sleeptime, void (*printer)())
+void	actions(t_data *data, int action, int64_t sleeptime)
 {
-	if (!is_hungry(data) || is_dead(data))
+	if (print_status(data, action))
 		return ;
-	print_status(data, action, printer);
 	mymsleep(sleeptime);
 }
 
-void	print_status(t_data *data, int action, void (*printer)())
+int	print_status(t_data *data, int action)
 {
+	int	ret;
+
 	pthread_mutex_lock(&data->phi->output);
-	printer(data, action);
+	ret = print(data, action);
 	pthread_mutex_unlock(&data->phi->output);
+	return (ret);
 }
 
-void	wrap_printf(t_data *data, int idx)
+int	print(t_data *data, int idx)
 {
-	printf(data->phi->format[idx], get_msec(), data->phi->width, data->num);
+	if (data->phi->dead || !is_hungry(data))
+		return (1);
+	printf(data->phi->format[idx], timestamp(data, idx), data->phi->width, data->num);
+	return (0);
 }
 
-void	eat_print(t_data *d, int idx)
+int64_t	timestamp(t_data *data, int idx)
 {
-	printf(d->phi->format[idx], start_time_init(d), d->phi->width, d->num);
+	if (idx == EAT)
+		return (start_time_init(data));
+	else
+		return (get_msec());
 }

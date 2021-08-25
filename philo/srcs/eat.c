@@ -2,7 +2,7 @@
 
 void	eating(t_data *data)
 {
-	actions(data, EAT, data->phi->eat, eat_print);
+	actions(data, EAT, data->phi->eat);
 	inc_eatcount(data);
 }
 

@@ -18,9 +18,10 @@ SRCS	=\
 	./srcs/main.c\
 	./srcs/philosopher.c\
 	./srcs/philo_init.c\
-	./srcs/print.c\
+	./srcs/print_actions.c\
 	./srcs/sleep_think.c\
 	./srcs/take_a_fork.c\
+	./srcs/wait_threads.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\

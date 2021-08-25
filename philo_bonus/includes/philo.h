@@ -7,6 +7,9 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <semaphore.h>
 # include "libph.h"
 # define GREEN  "\x1b[32m"
 # define RED    "\x1b[31m"
@@ -29,10 +32,10 @@ typedef struct s_phi
 	int64_t			eat;
 	int64_t			sleep;
 	int64_t			times;
-	int64_t			end_of_simulation;
+	int64_t			dead;
 	int64_t			think_time;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	eos;
+	pthread_mutex_t	mtxdead;
 	pthread_mutex_t	output;
 	int32_t			width;
 	char			*format[5];
@@ -40,8 +43,8 @@ typedef struct s_phi
 typedef struct s_data
 {
 	t_phi			*phi;
-	pthread_t		th;
-	pthread_t		th2;
+	pthread_t		thd;
+	pthread_t		thp;
 	int32_t			status[5];
 	int32_t			idx[2];
 	int64_t			num;
