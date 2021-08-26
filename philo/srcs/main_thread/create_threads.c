@@ -29,7 +29,6 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo)
 		.phi = philo,
 		.num = idx + 1,
 		.start = get_msec(),
-		.eatmax = philo->times
 	};
 	mtx_init_data(data);
 }
@@ -38,7 +37,6 @@ void	mtx_init_data(t_data *data)
 {
 	pthread_mutex_init(&data->mtxstart, NULL);
 	pthread_mutex_init(&data->mtxeatcount, NULL);
-	pthread_mutex_init(&data->mtxnum, NULL);
 }
 
 int	wait_end_of_simulation(t_data *data, t_phi *philo)

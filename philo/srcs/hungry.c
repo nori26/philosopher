@@ -2,10 +2,11 @@
 
 int64_t	is_hungry(t_data *data)
 {
-	return (mtx_do_func(data, &data->mtxeatcount, is_hungry_funcp));
+	return (mtx_do_func(data, &data->phi->tmp, is_hungry_funcp));
 }
 
 int64_t	is_hungry_funcp(t_data *data)
 {
-	return (data->eatmax == -1 || data->eatcount < data->eatmax);
+	return (data->phi->eatmax == -1
+		|| data->phi->enough != data->phi->num_of_phi);
 }

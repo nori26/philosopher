@@ -22,11 +22,13 @@ typedef struct s_phi
 	int64_t			deadline;
 	int64_t			eat;
 	int64_t			sleep;
-	int64_t			times;
+	int64_t			eatmax;
 	int64_t			dead;
 	int64_t			think_time;
+	int64_t			enough;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	output;
+	pthread_mutex_t	tmp;
 	int32_t			width;
 	char			*format[5];
 }t_phi;
@@ -38,12 +40,10 @@ typedef struct s_data
 	int64_t			num;
 	int64_t			start;
 	int64_t			now;
-	int64_t			eatmax;
 	int64_t			eatcount;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
-	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
 }t_data;
 typedef struct s_print

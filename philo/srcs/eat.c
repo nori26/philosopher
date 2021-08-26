@@ -19,12 +19,11 @@ int64_t	store_start_time(t_data *data)
 
 void	inc_eatcount(t_data *data)
 {
-	mtx_do_func(data, &data->mtxeatcount, inc_eatcount_func);
+	mtx_do_func(data, &data->phi->tmp, inc_eatcount_func);
 }
 
 int64_t	inc_eatcount_func(t_data *data)
 {
-	if (data->eatmax != -1)
-		data->eatcount++;
-	return (0);
+	data->eatcount++;
+	data->phi->enough += data->eatcount == data->phi->eatmax;return (0);
 }
