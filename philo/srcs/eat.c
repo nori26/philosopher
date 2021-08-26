@@ -25,5 +25,6 @@ void	inc_eatcount(t_data *data)
 int64_t	inc_eatcount_func(t_data *data)
 {
 	data->eatcount++;
-	data->phi->enough += data->eatcount == data->phi->eatmax;return (0);
+	data->phi->enough += data->eatcount == data->phi->eatmax;
+	return (0);
 }
