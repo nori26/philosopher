@@ -78,7 +78,7 @@ int		create_threads(t_data *data, t_phi *philo);
 t_func	select_simulation(t_phi *philo);
 void	data_init(t_data *data, int64_t idx, t_phi *philo);
 void	mtx_init_data(t_data *data);
-int		wait_end_of_simulation(t_data *data);
+int		wait_end_of_simulation(t_data *data, t_phi *philo);
 void	exit_philo(t_data *data, t_phi *philo);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);

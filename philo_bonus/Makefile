@@ -3,13 +3,15 @@ SHELL		= /bin/bash
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -MMD -MP
 SRCDIR		= ./srcs
+SRCSUBDIR	= ./srcs/main_thread
 LIBDIR		= ./libph
 B_SRCDIR	= ./srcs_bonus
 OBJDIR		= ./obj
 INCLUDE		= ./includes
-VPATH		= $(SRCDIR):$(LIBDIR):$(B_SRCDIR)
+VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
-	./srcs/main.c\
+	./srcs/main_prc/main.c\
+	./srcs/main_prc/philo_init.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\
