@@ -25,7 +25,7 @@ typedef struct s_phi
 	int64_t		deadline;
 	int64_t		eat;
 	int64_t		sleep;
-	int64_t		times;
+	int64_t		eatmax;
 	int32_t		width;
 	sem_t		*forks;
 	char		*format[5];
@@ -45,7 +45,6 @@ typedef struct s_data
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
-	pthread_mutex_t	mtxnum;
 	pthread_mutex_t	mtxeatcount;
 }t_data;
 typedef struct s_print
