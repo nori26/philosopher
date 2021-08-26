@@ -28,7 +28,7 @@ typedef struct s_phi
 	int64_t			enough;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	output;
-	pthread_mutex_t	tmp;
+	pthread_mutex_t	mtxeatcount;
 	int32_t			width;
 	char			*format[5];
 }t_phi;
@@ -44,7 +44,6 @@ typedef struct s_data
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
 	pthread_mutex_t	mtxstart;
-	pthread_mutex_t	mtxeatcount;
 }t_data;
 typedef struct s_print
 {
@@ -77,7 +76,6 @@ int64_t	is_hungry_funcp(t_data *data);
 int		create_threads(t_data *data, t_phi *philo);
 t_func	select_simulation(t_phi *philo);
 void	data_init(t_data *data, int64_t idx, t_phi *philo);
-void	mtx_init_data(t_data *data);
 int		wait_end_of_simulation(t_data *data, t_phi *philo);
 void	exit_philo(t_data *data, t_phi *philo);
 int32_t	philo_init(t_phi **philo);
