@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	sem_init(sem_t **forks, t_phi *philo)
 {

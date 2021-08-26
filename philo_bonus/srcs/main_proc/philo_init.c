@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 int32_t	philo_init(t_phi **philo)
 {
