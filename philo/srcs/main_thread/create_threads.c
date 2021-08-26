@@ -6,6 +6,7 @@ int	create_threads(t_data *data, t_phi *philo)
 	t_func	run_simulation;
 
 	i = 0;
+	mtx_init_philo(philo);
 	run_simulation = select_simulation(philo);
 	while (i < philo->num_of_phi)
 	{
@@ -39,8 +40,15 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 
 	i = 0;
 	while (i < philo->num_of_phi)
-		if (pthread_join(data[i].thd, NULL)
-			|| pthread_join(data[i++].thp, NULL))
+	{
+		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
 			return (1);
+		pthread_mutex_destroy(&data[i++].mtxstart);
+	}
+	i = 0;
+	while (i < philo->num_of_phi)
+		pthread_mutex_init(&philo->forks[i++], NULL);
+	pthread_mutex_destroy(&philo->output);
+	pthread_mutex_destroy(&philo->mtxeatcount);
 	return (0);
 }
