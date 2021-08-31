@@ -50,6 +50,7 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 		// }
 		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
 			return (1);
+		i++;
 	}
 	i = 0;
 	while (i < philo->num_of_phi)
