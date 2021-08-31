@@ -69,6 +69,7 @@ void wait_for_must_eat(t_phi *philo)
 	pid = waitpid(0, &status, WNOHANG);
 	if (pid)
 }
+
 void	sem_wait_for_end(t_phi *philo)
 {
 	int64_t	i;

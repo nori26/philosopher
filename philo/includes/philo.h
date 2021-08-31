@@ -28,7 +28,6 @@ typedef struct s_phi
 	int64_t			enough;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	output;
-	// pthread_mutex_t	mtxeatcount;
 	int32_t			width;
 	char			*format[5];
 }t_phi;
