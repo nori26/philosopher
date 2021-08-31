@@ -46,7 +46,7 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 	}
 	i = 0;
 	while (i < philo->num_of_phi)
-		pthread_mutex_init(&philo->forks[i++], NULL);
+		pthread_mutex_destroy(&philo->forks[i++]);
 	pthread_mutex_destroy(&philo->output);
 	pthread_mutex_destroy(&philo->mtxeatcount);
 	return (0);
