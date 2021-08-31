@@ -41,6 +41,13 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
+		// if (pthread_join(data[i].thp, NULL))
+		// 	return (2);
+		// if (pthread_join(data[i].thd, NULL))
+		// {
+		// 	puts("aiueo");
+		// 	return (1);
+		// }
 		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
 			return (1);
 	}

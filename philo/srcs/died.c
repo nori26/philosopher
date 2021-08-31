@@ -10,10 +10,10 @@ int64_t	ret_arg(int64_t	*arg)
 	return (*arg);
 }
 
-void	died_notice(t_data *data)
-{
-	mtx_do_func(data, &data->phi->output, notice_func);
-}
+// void	died_notice(t_data *data)
+// {
+// 	mtx_do_func(data, &data->phi->output, notice_func);
+// }
 
 int64_t	notice_func(t_data *data)
 {

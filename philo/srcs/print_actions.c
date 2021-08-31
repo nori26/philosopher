@@ -14,7 +14,7 @@ int64_t	print_status(t_print p)
 
 int64_t	print(t_print *p)
 {
-	if (p->data->phi->dead || !is_hungry(p->data))
+	if (p->data->phi->dead)// || !is_hungry(p->data))
 		return (1);
 	printf(p->data->phi->format[p->action],
 		timestamp(p->data, p->action), p->data->phi->width, p->data->num);
