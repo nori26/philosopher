@@ -59,18 +59,16 @@ enum	e_status
 
 int64_t	continue_simulation(t_data *data);
 int64_t	alive_and_hungry(t_data *data);
+int64_t	is_hungry(t_data *data);
 int64_t	is_alive(t_data *data);
-int64_t	ret_arg(int64_t	*arg);
-int64_t	died_notice(t_data *data);
 void	*doctor(void *arg);
 int64_t	over_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
+int64_t	died_notice(t_data *data);
 void	eating(t_data *data);
 int64_t	store_start_time(t_data *data);
 void	inc_eatcount(t_data *data);
 int64_t	inc_eatcount_func(t_data *data);
-int64_t	is_hungry(t_data *data);
-int64_t	is_hungry_funcp(t_data *data);
 int		create_threads(t_data *data, t_phi *philo);
 t_func	select_simulation(t_phi *philo);
 void	data_init(t_data *data, int64_t idx, t_phi *philo);

@@ -9,3 +9,14 @@ int64_t	alive_and_hungry(t_data *data)
 {
 	return (is_alive(data) && is_hungry(data));
 }
+
+int64_t	is_hungry(t_data *data)
+{
+	return (data->phi->eatmax == -1
+		|| data->phi->enough != data->phi->num_of_phi);
+}
+
+int64_t	is_alive(t_data *data)
+{
+	return (!data->phi->dead);
+}

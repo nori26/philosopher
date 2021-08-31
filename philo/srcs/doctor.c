@@ -29,3 +29,10 @@ int64_t	check_deadline(t_data *data)
 	}
 	return (0);
 }
+
+int64_t	died_notice(t_data *data)
+{
+	print(&(t_print){data, DIE});
+	data->phi->dead = 1;
+	return (0);
+}
