@@ -62,7 +62,7 @@ enum	e_status
 int64_t	is_alive(t_data *data);
 int64_t	ret_arg(int64_t	*arg);
 void	died_notice(t_data *data);
-int64_t	notice_func(t_data *data);
+int64_t	died_notice(t_data *data);
 void	*doctor(void *arg);
 int64_t	over_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);

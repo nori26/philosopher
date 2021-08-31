@@ -6,11 +6,6 @@ void	eating(t_data *data)
 	inc_eatcount(data);
 }
 
-// int64_t	start_time_init(t_data *data)
-// {
-// 	return (mtx_do_func(data, &data->phi->output, store_start_time));
-// }
-
 int64_t	store_start_time(t_data *data)
 {
 	data->start = get_msec();
