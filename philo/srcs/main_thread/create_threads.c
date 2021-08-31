@@ -19,6 +19,16 @@ int	create_threads(t_data *data, t_phi *philo)
 	return (0);
 }
 
+void	mtx_init_philo(t_phi *philo)
+{
+	int64_t	i;
+
+	pthread_mutex_init(&philo->output, NULL);
+	i = 0;
+	while (i < philo->num_of_phi)
+		pthread_mutex_init(&philo->forks[i++], NULL);
+}
+
 t_func	select_simulation(t_phi *philo)
 {
 	return ((t_func[2]){philosopher, solo}[philo->num_of_phi == 1]);
@@ -31,22 +41,4 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo)
 		.num = idx + 1,
 		.start = get_msec(),
 	};
-}
-
-int	wait_end_of_simulation(t_data *data, t_phi *philo)
-{
-	int64_t	i;
-
-	i = 0;
-	while (i < philo->num_of_phi)
-	{
-		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (i < philo->num_of_phi)
-		pthread_mutex_destroy(&philo->forks[i++]);
-	pthread_mutex_destroy(&philo->output);
-	return (0);
 }

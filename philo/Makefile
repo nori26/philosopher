@@ -14,7 +14,7 @@ SRCS	=\
 	./srcs/doctor.c\
 	./srcs/eat.c\
 	./srcs/main_thread/create_threads.c\
-	./srcs/main_thread/exit.c\
+	./srcs/main_thread/end.c\
 	./srcs/main_thread/main.c\
 	./srcs/main_thread/philo_init.c\
 	./srcs/philosopher.c\

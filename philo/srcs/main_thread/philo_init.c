@@ -42,13 +42,3 @@ int	philo_utils_init(t_data **data, t_phi *philo)
 	philo->think_time = (int64_t [2]){0, philo->eat}[philo->num_of_phi % 2];
 	return (0);
 }
-
-void	mtx_init_philo(t_phi *philo)
-{
-	int64_t	i;
-
-	pthread_mutex_init(&philo->output, NULL);
-	i = 0;
-	while (i < philo->num_of_phi)
-		pthread_mutex_init(&philo->forks[i++], NULL);
-}

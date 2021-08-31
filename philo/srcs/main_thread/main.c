@@ -14,8 +14,8 @@ int	main(int argc, char **argv)
 		|| validate_args(argc, argv, philo)
 		|| philo_utils_init(&data, philo)
 		|| create_threads(data, philo)
-		|| wait_end_of_simulation(data, philo))
-		ret = 1;
+		|| end_of_simulation(data, philo))
+		ret = !!write(2, "error", 5);
 	exit_philo(data, philo);
 	return (ret);
 }
