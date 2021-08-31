@@ -15,7 +15,7 @@ int	main(int argc, char **argv)
 		|| philo_utils_init(&data, philo)
 		|| create_threads(data, philo)
 		|| end_of_simulation(data, philo))
-		ret = !!write(2, "error", 5);
+		ret = !!write(2, "error\n", 6);
 	exit_philo(data, philo);
 	return (ret);
 }
