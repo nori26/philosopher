@@ -43,7 +43,6 @@ typedef struct s_data
 	int64_t			eatcount;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
-	pthread_mutex_t	mtxstart;
 }t_data;
 typedef struct s_print
 {
@@ -61,13 +60,11 @@ enum	e_status
 
 int64_t	is_alive(t_data *data);
 int64_t	ret_arg(int64_t	*arg);
-void	died_notice(t_data *data);
-int64_t	notice_func(t_data *data);
+int64_t	died_notice(t_data *data);
 void	*doctor(void *arg);
 int64_t	over_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
 void	eating(t_data *data);
-int64_t	start_time_init(t_data *data);
 int64_t	store_start_time(t_data *data);
 void	inc_eatcount(t_data *data);
 int64_t	inc_eatcount_func(t_data *data);

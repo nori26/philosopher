@@ -9,10 +9,7 @@ void	*doctor(void *arg)
 	{
 		data->now = get_msec();
 		if (over_deadline(data))
-		{
-			died_notice(data);
 			break ;
-		}
 		usleep(1000);
 	}
 	return (NULL);
@@ -20,11 +17,15 @@ void	*doctor(void *arg)
 
 int64_t	over_deadline(t_data *data)
 {
-	//mtxprint
-	return (mtx_do_func(data, &data->mtxstart, check_deadline));
+	return (mtx_do_func(data, &data->phi->output, check_deadline));
 }
 
 int64_t	check_deadline(t_data *data)
 {
-	return (data->start + data->phi->deadline < data->now);
+	if (data->start + data->phi->deadline < data->now)
+	{
+		died_notice(data);
+		return (1);
+	}
+	return (0);
 }
