@@ -42,7 +42,10 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 	while (i < philo->num_of_phi)
 	{
 		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
+		{
+			printf("%ld\n", i);
 			return (1);
+		}
 	}
 	i = 0;
 	while (i < philo->num_of_phi)
