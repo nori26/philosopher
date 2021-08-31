@@ -2,7 +2,7 @@
 
 int64_t	is_alive(t_data *data)
 {
-	return (!mtx_do_func(&data->phi->dead, &data->phi->output, ret_arg));
+	return (!data->phi->dead);
 }
 
 int64_t	ret_arg(int64_t	*arg)

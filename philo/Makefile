@@ -10,6 +10,7 @@ OBJDIR		= ./obj
 INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
+	./srcs/continue_check.c\
 	./srcs/died.c\
 	./srcs/doctor.c\
 	./srcs/eat.c\
