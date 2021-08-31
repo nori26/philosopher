@@ -28,6 +28,7 @@ typedef struct s_phi
 	sem_t	*forks2;
 	sem_t	*print;
 	sem_t	*musteat;
+	sem_t	*stop;
 	pid_t	*pid;
 	int64_t	num_of_phi;
 	int64_t	deadline;

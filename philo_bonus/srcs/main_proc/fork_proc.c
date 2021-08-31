@@ -28,7 +28,6 @@ void	wait_process(t_phi *philo)
 	int		status;
 	pid_t	pid;
 
-
 	if (philo->musteat == -1)
 		wait_for_no_option(philo);
 	else
@@ -60,14 +59,15 @@ void wait_for_no_option(t_phi *philo)
 {
 
 }
+
 void wait_for_must_eat(t_phi *philo)
 {
 	pid_t	pid;
 	int		status;
 
 	sem_wait_for_end(philo);
-	pid = waitpid(0, &status, WNOHANG);
-	if (pid)
+	sem_post()
+	// if (pid)
 }
 
 void	sem_wait_for_end(t_phi *philo)
