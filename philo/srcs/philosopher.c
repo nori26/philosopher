@@ -21,7 +21,8 @@ void	delay_if_even(t_data *data)
 		usleep(1000);
 }
 
-void	*nop(void *arg)
+void	*solo(void *arg)
 {
+	take_a_fork(arg);
 	return (arg);
 }
