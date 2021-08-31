@@ -80,7 +80,7 @@ int		philo_utils_init(t_data **data, t_phi *philo);
 void	mtx_init_philo(t_phi *philo);
 void	*philosopher(void *arg);
 void	delay_if_even(t_data *data);
-void	*nop(void *arg);
+void	*solo(void *arg);
 void	actions(t_data *data, int action, int64_t sleeptime);
 int64_t	print_status(t_print p);
 int64_t	print(t_print *p);

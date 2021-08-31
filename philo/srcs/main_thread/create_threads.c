@@ -21,7 +21,7 @@ int	create_threads(t_data *data, t_phi *philo)
 
 t_func	select_simulation(t_phi *philo)
 {
-	return ((t_func[2]){philosopher, nop}[philo->num_of_phi == 1]);
+	return ((t_func[2]){philosopher, solo}[philo->num_of_phi == 1]);
 }
 
 void	data_init(t_data *data, int64_t idx, t_phi *philo)
