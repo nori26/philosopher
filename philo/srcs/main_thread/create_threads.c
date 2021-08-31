@@ -31,7 +31,7 @@ void	data_init(t_data *data, int64_t idx, t_phi *philo)
 		.num = idx + 1,
 		.start = get_msec(),
 	};
-	pthread_mutex_init(&data->mtxstart, NULL);
+	// pthread_mutex_init(&data->mtxstart, NULL);
 }
 
 int	wait_end_of_simulation(t_data *data, t_phi *philo)
@@ -43,7 +43,6 @@ int	wait_end_of_simulation(t_data *data, t_phi *philo)
 	{
 		if (pthread_join(data[i].thd, NULL) || pthread_join(data[i].thp, NULL))
 			return (1);
-		pthread_mutex_destroy(&data[i++].mtxstart);
 	}
 	i = 0;
 	while (i < philo->num_of_phi)

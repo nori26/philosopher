@@ -24,7 +24,7 @@ int64_t	print(t_print *p)
 int64_t	timestamp(t_data *data, int action)
 {
 	if (action == EAT)
-		return (start_time_init(data));
+		return (store_start_time(data));
 	else
 		return (get_msec());
 }

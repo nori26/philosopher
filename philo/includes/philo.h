@@ -43,7 +43,7 @@ typedef struct s_data
 	int64_t			eatcount;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
-	pthread_mutex_t	mtxstart;
+	// pthread_mutex_t	mtxstart;
 }t_data;
 typedef struct s_print
 {

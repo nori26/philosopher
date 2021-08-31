@@ -21,10 +21,15 @@ void	*doctor(void *arg)
 int64_t	over_deadline(t_data *data)
 {
 	//mtxprint
-	return (mtx_do_func(data, &data->mtxstart, check_deadline));
+	return (mtx_do_func(data, &data->phi->output, check_deadline));
 }
 
 int64_t	check_deadline(t_data *data)
 {
-	return (data->start + data->phi->deadline < data->now);
+	if (data->start + data->phi->deadline < data->now)
+	{
+		notice_func(data);
+		return (1);
+	}
+	return (0);
 }
