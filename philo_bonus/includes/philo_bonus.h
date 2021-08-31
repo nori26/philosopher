@@ -26,9 +26,11 @@ typedef struct s_phi
 {
 	sem_t	*forks1;
 	sem_t	*forks2;
-	sem_t	*print;
+	sem_t	*outer;
+	sem_t	*inner;//
+	sem_t	*stop;//
+	sem_t	*restart;//
 	sem_t	*musteat;
-	sem_t	*stop;
 	pid_t	*pid;
 	int64_t	num_of_phi;
 	int64_t	deadline;
@@ -39,6 +41,7 @@ typedef struct s_phi
 	int64_t	think_time;
 	int64_t	enough;
 	int32_t	width;
+	int32_t	end;
 	char	*format[5];
 }t_phi;
 typedef struct s_data
@@ -67,11 +70,14 @@ enum	e_status
 
 void	exit_philo(t_phi *philo);
 void	err_exit(t_phi *philo, char *message);
-size_t	ft_fastrlen(const char *str);
+size_t	ft_strlen(const char *str);
 void	new_process(t_phi *philo);
 void	wait_process(t_phi *philo);
-void	sem_wait_for_end(t_phi *philo);
+void	wait_for_no_option(t_phi *philo);
+void	wait_for_must_eat(t_phi *philo);
+void	sem_wait_n_times(int64_t n, sem_t *sem);
 int		philosopher(t_phi *philo);
+void	*waiter(void *arg);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_phi *philo);

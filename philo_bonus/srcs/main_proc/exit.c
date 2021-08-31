@@ -6,7 +6,7 @@ void	exit_philo(t_phi *philo)
 		free(philo->pid);
 	sem_end(philo->forks1, "/forks1");
 	sem_end(philo->forks2, "/forks2");
-	sem_end(philo->print, "/print");
+	sem_end(philo->outer, "/outer");
 	sem_end(philo->musteat, "/musteat");
 	free(philo);
 }

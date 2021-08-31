@@ -59,19 +59,19 @@ int	ft_sem_init(t_phi *philo)
 		sem_end(philo->forks1, "/forks1");
 		return (1);
 	}
-	philo->print = sem_open("/print", O_CREAT | O_EXCL, 1);
+	philo->outer = sem_open("/outer", O_CREAT | O_EXCL, 1);
 	if (philo->forks2 == SEM_FAILED)
 	{
 		sem_end(philo->forks1, "/forks1");
 		sem_end(philo->forks2, "/forks2");
 		return (1);
 	}
-	philo->print = sem_open("/musteat", O_CREAT | O_EXCL, 0);
+	philo->musteat = sem_open("/musteat", O_CREAT | O_EXCL, 0);
 	if (philo->forks2 == SEM_FAILED)
 	{
 		sem_end(philo->forks1, "/forks1");
 		sem_end(philo->forks2, "/forks2");
-		sem_end(philo->print, "/print");
+		sem_end(philo->outer, "/outer");
 		return (1);
 	}
 	return (0);

@@ -65,19 +65,21 @@ void wait_for_must_eat(t_phi *philo)
 	pid_t	pid;
 	int		status;
 
-	sem_wait_for_end(philo);
-	sem_post()
+	sem_wait_n_times(philo->num_of_phi, philo->musteat);
+	sem_post(philo->stop);
+	sem_wait_n_times(philo->num_of_phi, philo->restart);
+	sem_post(philo->inner);
 	// if (pid)
 }
 
-void	sem_wait_for_end(t_phi *philo)
+void	sem_wait_n_times(int64_t n, sem_t *sem)
 {
 	int64_t	i;
 
 	i = 0;
-	while (i < philo->num_of_phi)
+	while (i < n)
 	{
-		sem_wait(philo->musteat);
+		sem_wait(sem);
 		i++;
 	}
 }
@@ -85,4 +87,15 @@ void	sem_wait_for_end(t_phi *philo)
 int	philosopher(t_phi *philo)
 {
 	
+}
+
+void	*waiter(void *arg)
+{
+	t_phi *philo;
+
+	philo = arg;
+	sem_wait(philo->stop);
+	philo->end = 1;
+	sem_post(philo->restart);
+	return (NULL);
 }
