@@ -13,6 +13,7 @@ int	main(int argc, char **argv)
 	if ((argc != 5 && argc != 6)
 		|| philo_init(&philo)
 		|| validate_args(argc, argv, philo)
+		|| philo_utils_init(philo)
 		|| 0)
 		return (1);
 	

@@ -6,10 +6,13 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/stat.h>
 # include <semaphore.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <unistd.h>
 # include "libph.h"
 # define GREEN  "\x1b[32m"
 # define RED    "\x1b[31m"
@@ -21,16 +24,21 @@ typedef struct timeval	t_time;
 typedef void			*(*t_func)(void *);
 typedef struct s_phi
 {
-	int64_t		num_of_phi;
-	int64_t		deadline;
-	int64_t		eat;
-	int64_t		sleep;
-	int64_t		eatmax;
-	int32_t		width;
-	sem_t		*forks;
-	char		*format[5];
-	int64_t		dead;
-	int64_t		think_time;
+	sem_t	*forks1;
+	sem_t	*forks2;
+	sem_t	*print;
+	sem_t	*musteat;
+	pid_t	*pid;
+	int64_t	num_of_phi;
+	int64_t	deadline;
+	int64_t	eat;
+	int64_t	sleep;
+	int64_t	eatmax;
+	int64_t	dead;
+	int64_t	think_time;
+	int64_t	enough;
+	int32_t	width;
+	char	*format[5];
 }t_phi;
 typedef struct s_data
 {
@@ -40,12 +48,7 @@ typedef struct s_data
 	int64_t			num;
 	int64_t			start;
 	int64_t			now;
-	int64_t			eatmax;
 	int64_t			eatcount;
-	pthread_mutex_t	*fork1;
-	pthread_mutex_t	*fork2;
-	pthread_mutex_t	mtxstart;
-	pthread_mutex_t	mtxeatcount;
 }t_data;
 typedef struct s_print
 {
@@ -61,9 +64,17 @@ enum	e_status
 	DIE
 };
 
+void	exit_philo(t_phi *philo);
+void	err_exit(t_phi *philo, char *message);
+size_t	ft_fastrlen(const char *str);
+void	new_process(t_phi *philo);
+void	wait_process(t_phi *philo);
+void	sem_wait_for_end(t_phi *philo);
+int		philosopher(t_phi *philo);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
-int		philo_utils_init(t_data **data, t_phi *philo);
-void	mtx_init_philo(t_phi *philo);
+int		philo_utils_init(t_phi *philo);
+int		ft_sem_init(t_phi *philo);
+void	sem_end(sem_t *sem, char *name);
 
 #endif

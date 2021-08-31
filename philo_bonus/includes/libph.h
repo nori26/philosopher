@@ -2,6 +2,8 @@
 # define LIBPH_H
 # include <pthread.h>
 # include <stdint.h>
+# define LSB_MASK 0x0101010101010101ull
+# define MSB_MASK 0x8080808080808080ull
 
 int		count_digits(int64_t n);
 int		ft_atol_err(char *s, int64_t *i);

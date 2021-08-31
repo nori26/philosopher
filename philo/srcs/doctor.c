@@ -20,6 +20,7 @@ void	*doctor(void *arg)
 
 int64_t	over_deadline(t_data *data)
 {
+	//mtxprint
 	return (mtx_do_func(data, &data->mtxstart, check_deadline));
 }
 

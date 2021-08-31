@@ -10,8 +10,11 @@ OBJDIR		= ./obj
 INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
-	./srcs/main_prc/main.c\
-	./srcs/main_prc/philo_init.c\
+	./srcs/main_proc/exit.c\
+	./srcs/main_proc/fork_proc.c\
+	./srcs/main_proc/main.c\
+	./srcs/main_proc/philo_init.c\
+	./srcs/main_proc/sem_init.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\
@@ -67,7 +70,7 @@ rm_exec	:
 re		: fclean all
 
 add		:
-	bash header.sh "$(SRCDIR)" $(INCLUDE)/philo.h
+	bash header.sh "$(SRCDIR)" $(INCLUDE)/philo_bonus.h
 	bash header.sh "$(LIBDIR)" $(INCLUDE)/libph.h
 	bash make.sh "$(SRCDIR)" SRCS
 	bash make.sh "$(LIBDIR)" LIBSRCS
