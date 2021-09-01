@@ -66,6 +66,7 @@ int64_t	check_deadline(t_data *data);
 int64_t	died_notice(t_data *data);
 void	exit_philo(t_phi *philo);
 void	err_exit(t_phi *philo, char *message);
+void	free_exit(t_phi *philo, int status);
 size_t	ft_strlen(const char *str);
 void	new_process(t_phi *philo);
 void	wait_process(t_phi *philo);
@@ -78,12 +79,12 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_phi *philo);
 int		ft_sem_init(t_phi *philo);
 void	sem_end(sem_t *sem, char *name);
+void	*philosopher(void *arg);
+void	*phisolopher(void *arg);
 void	philo_manager(t_phi *philo);
 int		create_threads(t_phi *philo);
 t_func	select_simulation(t_phi *philo);
 void	notice_die_or_eat_enough(t_phi *philo);
-void	*philosopher(void *arg);
-void	*phisolopher(void *arg);
-void	free_exit(t_phi *philo, int status);
+void	wait_threads(t_phi *philo);
 
 #endif

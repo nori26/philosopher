@@ -18,6 +18,13 @@ void	err_exit(t_phi *philo, char *message)
 	kill(0, SIGINT);
 }
 
+void	free_exit(t_phi *philo, int status)
+{
+	free(philo->pid);
+	free(philo);
+	exit(status);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	uint64_t		longvalue;

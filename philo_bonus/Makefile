@@ -17,6 +17,7 @@ SRCS	=\
 	./srcs/main_proc/philo_init.c\
 	./srcs/main_proc/sem_init.c\
 	./srcs/philosopher.c\
+	./srcs/philo_manager.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\
