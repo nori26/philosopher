@@ -1,11 +1,11 @@
 #include "philo_bonus.h"
 
-void	sleeping(t_phi *data)
+void	sleeping(t_phi *philo)
 {
-	actions(data, SLEEP, data->phi->sleep);
+	actions(philo, SLEEP, philo->sleep);
 }
 
-void	thinking(t_phi *data)
+void	thinking(t_phi *philo)
 {
-	actions(data, THINK, data->phi->think_time);
+	actions(philo, THINK, philo->think_time);
 }

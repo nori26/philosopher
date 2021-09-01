@@ -2,7 +2,7 @@
 
 int64_t	continue_simulation(t_phi *philo)
 {
-	return (mtx_do_func(philo, &philo->phi->output, alive_and_hungry));
+	return (sem_do_func(philo, &philo->outer, alive_and_hungry));
 }
 
 int64_t	alive_and_hungry(t_phi *philo)
@@ -12,11 +12,11 @@ int64_t	alive_and_hungry(t_phi *philo)
 
 int64_t	is_hungry(t_phi *philo)
 {
-	return (philo->phi->eatmax == -1
-		|| philo->phi->enough != philo->phi->num_of_phi);
+	return (philo->eatmax == -1
+		|| philo->enough != philo->num_of_phi);
 }
 
 int64_t	is_alive(t_phi *philo)
 {
-	return (!philo->phi->dead);
+	return (!philo->dead);
 }

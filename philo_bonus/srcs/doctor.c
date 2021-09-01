@@ -2,37 +2,37 @@
 
 void	*doctor(void *arg)
 {
-	t_data	*data;
+	t_phi	*philo;
 
-	data = arg;
-	while (continue_simulation(data))
+	philo = arg;
+	while (continue_simulation(philo))
 	{
-		data->now = get_msec();
-		if (over_deadline(data))
+		philo->now = get_msec();
+		if (over_deadline(philo))
 			break ;
 		usleep(1000);
 	}
 	return (NULL);
 }
 
-int64_t	over_deadline(t_data *data)
+int64_t	over_deadline(t_phi *philo)
 {
-	return (mtx_do_func(data, &data->phi->output, check_deadline));
+	return (sem_do_func(philo, &philo->outer, check_deadline));
 }
 
-int64_t	check_deadline(t_data *data)
+int64_t	check_deadline(t_phi *philo)
 {
-	if (data->start + data->phi->deadline < data->now)
+	if (philo->start + philo->deadline < philo->now)
 	{
-		died_notice(data);
+		died_notice(philo);
 		return (1);
 	}
 	return (0);
 }
 
-int64_t	died_notice(t_data *data)
+int64_t	died_notice(t_phi *philo)
 {
-	print(&(t_print){data, DIE});
-	data->phi->dead = 1;
+	print(&(t_print){philo, DIE});
+	philo->dead = 1;
 	return (0);
 }

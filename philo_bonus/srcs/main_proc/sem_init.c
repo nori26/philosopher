@@ -11,7 +11,7 @@ int	ft_sem_init(t_phi *philo)
 	name = (char *[]){"/forks1", "/forks2", "/outer", "/inner", "/stop",
 		"/restart", "/musteat"};
 	value = (unsigned []){philo->num_of_phi / 2,
-		philo->num_of_phi - philo->num_of_phi / 2, 1, 1, 0, 0};
+		philo->num_of_phi - philo->num_of_phi / 2, 1, 1, 0, 0, 0};
 	return (sems_open(sems, name, value));
 }
 

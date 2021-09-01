@@ -21,7 +21,7 @@ int64_t	print(t_print *p)
 {
 	if (!is_alive(p->philo) || !is_hungry(p->philo))
 		return (1);
-	printf(p->data->phi->format[p->action],
+	printf(p->philo->format[p->action],
 		timestamp(p->philo, p->action), p->philo->width, p->philo->num);
 	return (0);
 }
