@@ -4,6 +4,7 @@ void	philo_manager(t_phi *philo)
 {
 	create_threads(philo);
 	notice_die_or_eat_enough(philo);
+	wait_threads(philo);
 }
 
 int	create_threads(t_phi *philo)
@@ -42,6 +43,12 @@ void	*phisolopher(void *arg)
 {
 	take_a_fork(arg);
 	return (arg);
+}
+
+void	wait_threads(t_phi *philo)
+{
+	if (pthread_join(philo->thd, NULL) || pthread_join(philo->thp, NULL))
+		free_exit(philo, 1);
 }
 
 void	free_exit(t_phi *philo, int status)
