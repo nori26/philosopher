@@ -10,7 +10,7 @@ int		ft_atol_err(char *s, int64_t *i);
 size_t	ft_strlen(const char *str);
 int64_t	get_msec(void);
 int64_t	get_usec(void);
-int64_t	sem_do_func(void *arg, sem_t *sem, int64_t (*func)());
 void	mymsleep(int64_t msec);
+int64_t	sem_do_func(void *arg, sem_t *sem, int64_t (*func)());
 
 #endif

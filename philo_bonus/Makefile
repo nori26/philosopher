@@ -29,8 +29,8 @@ LIBSRCS	=\
 	./libph/ft_strlen.c\
 	./libph/get_msec.c\
 	./libph/get_usec.c\
-	./libph/mtx_do_func.c\
 	./libph/mymsleep.c\
+	./libph/sem_do_func.c\
 
 B_SRCS	=\
 
