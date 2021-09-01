@@ -67,7 +67,6 @@ int64_t	died_notice(t_data *data);
 void	exit_philo(t_phi *philo);
 void	err_exit(t_phi *philo, char *message);
 void	free_exit(t_phi *philo, int status);
-size_t	ft_strlen(const char *str);
 void	new_process(t_phi *philo);
 void	wait_process(t_phi *philo);
 void	wait_for_no_option(t_phi *philo);

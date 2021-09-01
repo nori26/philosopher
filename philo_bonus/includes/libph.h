@@ -7,6 +7,7 @@
 
 int		count_digits(int64_t n);
 int		ft_atol_err(char *s, int64_t *i);
+size_t	ft_strlen(const char *str);
 int64_t	get_msec(void);
 int64_t	get_usec(void);
 int64_t	mtx_do_func(void *arg, pthread_mutex_t *lock, int64_t (*func)());

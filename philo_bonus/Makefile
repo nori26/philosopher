@@ -22,6 +22,7 @@ SRCS	=\
 LIBSRCS	=\
 	./libph/count_digits.c\
 	./libph/ft_atoi_err.c\
+	./libph/ft_strlen.c\
 	./libph/get_msec.c\
 	./libph/get_usec.c\
 	./libph/mtx_do_func.c\
