@@ -2,7 +2,6 @@
 
 void	*philosopher(void *arg)
 {
-	delay_if_even(arg);
 	forks_init(arg);
 	while (continue_simulation(arg))
 	{
@@ -13,12 +12,6 @@ void	*philosopher(void *arg)
 		thinking(arg);
 	}
 	return (NULL);
-}
-
-void	delay_if_even(t_data *data)
-{
-	if (!(data->num % 2))
-		usleep(1000);
 }
 
 void	*phisolopher(void *arg)
