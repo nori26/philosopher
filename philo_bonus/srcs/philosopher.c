@@ -9,18 +9,12 @@ void	philo_manager(t_phi *philo)
 
 int	create_threads(t_phi *philo)
 {
-	int64_t	i;
 	t_func	run_simulation;
 
-	i = 0;
 	run_simulation = select_simulation(philo);
-	while (i < philo->num_of_phi)
-	{
-		if (pthread_create(&philo->thp, NULL, run_simulation, &philo)
-			|| pthread_create(&philo->thd, NULL, doctor, &philo))
-			free_exit(philo, 1);
-		i++;
-	}
+	if (pthread_create(&philo->thp, NULL, run_simulation, &philo)
+		|| pthread_create(&philo->thd, NULL, doctor, &philo))
+		free_exit(philo, 1);
 	return (0);
 }
 
