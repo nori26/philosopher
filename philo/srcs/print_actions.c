@@ -41,6 +41,6 @@ void	mymsleep(int64_t msec, t_data *data)
 	while (get_usec() - start < sleeptime - 1000 && continue_simulation(data))
 		usleep(1000);
 	sleeptime = start + sleeptime - get_usec();
-	if (sleeptime > 0 && continue_simulation(data))
+	if (sleeptime > 0 && sleeptime < 1000)
 		usleep(sleeptime);
 }
