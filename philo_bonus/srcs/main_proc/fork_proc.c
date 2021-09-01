@@ -7,6 +7,7 @@ void	new_process(t_phi *philo)
 	i = 0;
 	while (i < philo->num_of_phi)
 	{
+		philo->num = i + 1;
 		philo->pid[i] = fork();
 		if (philo->pid[i] == -1)
 			err_exit(philo, "fork failed");
@@ -79,9 +80,4 @@ void	sem_wait_n_times(int64_t n, sem_t *sem)
 		sem_wait(sem);
 		i++;
 	}
-}
-
-int	philo_manager(t_phi *philo)
-{
-	
 }

@@ -10,6 +10,7 @@ OBJDIR		= ./obj
 INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
+	./srcs/continue_check.c\
 	./srcs/doctor.c\
 	./srcs/main_proc/exit.c\
 	./srcs/main_proc/fork_proc.c\
@@ -18,6 +19,9 @@ SRCS	=\
 	./srcs/main_proc/sem_init.c\
 	./srcs/philosopher.c\
 	./srcs/philo_manager.c\
+	./srcs/print_actions.c\
+	./srcs/sleep_think.c\
+	./srcs/take_a_fork.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\

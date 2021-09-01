@@ -24,6 +24,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| ft_atol_err(argv[4], &philo->sleep)
 		|| (argc == 6 && ft_atol_err(argv[5], &philo->musteat))
 		|| philo->num_of_phi <= 0
+		|| philo->num_of_phi > UINT_MAX
 		|| philo->deadline < 0
 		|| philo->eat < 0
 		|| philo->sleep < 0
@@ -46,39 +47,4 @@ int	philo_utils_init(t_phi *philo)
 	philo->width = count_digits(philo->num_of_phi);
 	philo->think_time = (int64_t [2]){0, philo->eat}[philo->num_of_phi % 2];
 	return (0);
-}
-
-int	ft_sem_init(t_phi *philo)
-{
-	philo->forks1 = sem_open("/fork1", O_CREAT | O_EXCL, philo->num_of_phi / 2);
-	if (philo->forks2 == SEM_FAILED)
-		return (1);
-	philo->forks2 = sem_open("/forks2", O_CREAT | O_EXCL, philo->num_of_phi - (philo->num_of_phi / 2));
-	if (philo->forks2 == SEM_FAILED)
-	{
-		sem_end(philo->forks1, "/forks1");
-		return (1);
-	}
-	philo->outer = sem_open("/outer", O_CREAT | O_EXCL, 1);
-	if (philo->forks2 == SEM_FAILED)
-	{
-		sem_end(philo->forks1, "/forks1");
-		sem_end(philo->forks2, "/forks2");
-		return (1);
-	}
-	philo->musteat = sem_open("/musteat", O_CREAT | O_EXCL, 0);
-	if (philo->forks2 == SEM_FAILED)
-	{
-		sem_end(philo->forks1, "/forks1");
-		sem_end(philo->forks2, "/forks2");
-		sem_end(philo->outer, "/outer");
-		return (1);
-	}
-	return (0);
-}
-
-void	sem_end(sem_t *sem, char *name)
-{
-	sem_close(sem);
-	sem_unlink(name);
 }

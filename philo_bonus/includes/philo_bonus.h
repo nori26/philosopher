@@ -42,13 +42,14 @@ typedef struct s_phi
 	int64_t		dead;
 	int64_t		think_time;
 	int64_t		enough;
+	int64_t		num;
 	int32_t		width;
 	int32_t		end;
 	char		*format[5];
 }t_phi;
 typedef struct s_print
 {
-	t_data	*data;
+	t_phi	*philo;
 	int		action;
 }t_print;
 enum	e_status
@@ -60,6 +61,10 @@ enum	e_status
 	DIE
 };
 
+int64_t	continue_simulation(t_phi *philo);
+int64_t	alive_and_hungry(t_phi *philo);
+int64_t	is_hungry(t_phi *philo);
+int64_t	is_alive(t_phi *philo);
 void	*doctor(void *arg);
 int64_t	over_deadline(t_data *data);
 int64_t	check_deadline(t_data *data);
@@ -85,5 +90,14 @@ int		create_threads(t_phi *philo);
 t_func	select_simulation(t_phi *philo);
 void	notice_die_or_eat_enough(t_phi *philo);
 void	wait_threads(t_phi *philo);
+void	actions(t_phi *philo, int action, int64_t sleeptime);
+int64_t	print_status(t_print p);
+int64_t	print(t_print *p);
+int64_t	timestamp(t_phi *philo, int action);
+void	sleeping(t_phi *data);
+void	thinking(t_phi *data);
+void	get_forks(t_phi *data);
+void	release_forks(t_phi *data);
+void	take_a_fork(t_phi *data);
 
 #endif

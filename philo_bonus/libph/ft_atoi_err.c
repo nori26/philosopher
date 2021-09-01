@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	ft_atol_err(char *s, int64_t *i)
 {
