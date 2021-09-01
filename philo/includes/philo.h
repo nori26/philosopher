@@ -81,6 +81,7 @@ int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_data **data, t_phi *philo);
 void	*philosopher(void *arg);
+void	delay_if_even(t_data *data);
 void	*phisolopher(void *arg);
 void	actions(t_data *data, int action, int64_t sleeptime);
 int64_t	print_status(t_print p);
