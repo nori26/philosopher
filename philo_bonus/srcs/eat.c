@@ -14,12 +14,17 @@ int64_t	store_start_time(t_phi *philo)
 
 void	inc_eatcount(t_phi *philo)
 {
-	mtx_do_func(philo, &philo->outer, inc_eatcount_func);
+	sem_do_func(philo, &philo->outer, inc_eatcount_func);
 }
 
 int64_t	inc_eatcount_func(t_phi *philo)
 {
-	philo->eatcount++;
-	philo->enough += philo->eatcount == philo->eatmax;
+	if (philo->musteat != -1)
+		philo->eatcount++;
+	if (philo->eatcount == philo->musteat)
+	{
+		philo->enough += 1;
+		sem_post(philo->end_ready);
+	}
 	return (0);
 }

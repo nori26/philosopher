@@ -87,6 +87,7 @@ void	actions(t_data *data, int action, int64_t sleeptime);
 int64_t	print_status(t_print p);
 int64_t	print(t_print *p);
 int64_t	timestamp(t_data *data, int action);
+void	mymsleep(int64_t msec, t_data *data);
 void	sleeping(t_data *data);
 void	thinking(t_data *data);
 void	forks_init(t_data *data);

@@ -7,9 +7,9 @@ int	ft_sem_init(t_phi *philo)
 	char		**name;
 
 	sems = (sem_t *[]){philo->forks1, philo->forks2, philo->outer,
-		philo->inner, philo->stop, philo->restart, philo->musteat};
+		philo->inner, philo->stop, philo->restart, philo->end_ready};
 	name = (char *[]){"/forks1", "/forks2", "/outer", "/inner", "/stop",
-		"/restart", "/musteat"};
+		"/restart", "/end_ready"};
 	value = (unsigned []){philo->num_of_phi / 2,
 		philo->num_of_phi - philo->num_of_phi / 2, 1, 1, 0, 0, 0};
 	return (sems_open(sems, name, value));

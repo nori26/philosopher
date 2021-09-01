@@ -27,10 +27,11 @@ typedef struct s_phi
 	sem_t		*forks1;
 	sem_t		*forks2;
 	sem_t		*outer;
-	sem_t		*inner;//
-	sem_t		*stop;//
-	sem_t		*restart;//
-	sem_t		*musteat;
+	sem_t		*inner;
+	sem_t		*stop;
+	sem_t		*restart;
+	sem_t		*end_ready;
+	int64_t		*musteat;
 	pid_t		*pid;
 	pthread_t	thp;
 	pthread_t	thd;
@@ -38,7 +39,6 @@ typedef struct s_phi
 	int64_t		deadline;
 	int64_t		eat;
 	int64_t		sleep;
-	int64_t		eatmax;
 	int64_t		dead;
 	int64_t		think_time;
 	int64_t		enough;

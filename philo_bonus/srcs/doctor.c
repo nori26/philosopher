@@ -22,7 +22,7 @@ int64_t	over_deadline(t_phi *philo)
 
 int64_t	check_deadline(t_phi *philo)
 {
-	if (philo->start + philo->deadline < philo->now)
+	if (philo->deadline < philo->now - philo->start)//
 	{
 		died_notice(philo);
 		return (1);

@@ -26,6 +26,7 @@ void	wait_process(t_phi *philo)
 	int		status;
 	pid_t	pid;
 
+	wait_for_must_eat(philo);
 	if (philo->musteat == -1)
 		wait_for_no_option(philo);
 	else
@@ -67,7 +68,6 @@ void wait_for_must_eat(t_phi *philo)
 	sem_post(philo->stop);
 	sem_wait_n_times(philo->num_of_phi, philo->restart);
 	sem_post(philo->inner);
-	// if (pid)
 }
 
 void	sem_wait_n_times(int64_t n, sem_t *sem)

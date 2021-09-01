@@ -22,7 +22,7 @@ int64_t	over_deadline(t_data *data)
 
 int64_t	check_deadline(t_data *data)
 {
-	if (data->start + data->phi->deadline < data->now)
+	if (data->phi->deadline < data->now - data->start)
 	{
 		died_notice(data);
 		return (1);

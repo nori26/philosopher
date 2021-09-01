@@ -12,7 +12,7 @@ int64_t	alive_and_hungry(t_phi *philo)
 
 int64_t	is_hungry(t_phi *philo)
 {
-	return (philo->eatmax == -1
+	return (philo->musteat == -1
 		|| philo->enough != philo->num_of_phi);
 }
 

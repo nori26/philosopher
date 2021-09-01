@@ -28,7 +28,6 @@ LIBSRCS	=\
 	./libph/get_msec.c\
 	./libph/get_usec.c\
 	./libph/mtx_do_func.c\
-	./libph/mymsleep.c\
 
 # B_SRCS	=\
 

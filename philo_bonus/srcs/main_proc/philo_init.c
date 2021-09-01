@@ -11,7 +11,7 @@ int32_t	philo_init(t_phi **philo)
 		.format[2] = CYAN"%ld %*ld is sleeping\n"RESET,
 		.format[3] = "%ld %*ld is thinking\n",
 		.format[4] = RED"%ld %*ld died\n"RESET,
-		.eatmax = -1
+		.musteat = -1
 	};
 	return (0);
 }
@@ -24,7 +24,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| ft_atol_err(argv[4], &philo->sleep)
 		|| (argc == 6 && ft_atol_err(argv[5], &philo->musteat))
 		|| philo->num_of_phi <= 0
-		|| philo->num_of_phi > UINT_MAX
+		|| philo->num_of_phi > INT_MAX
 		|| philo->deadline < 0
 		|| philo->eat < 0
 		|| philo->sleep < 0
