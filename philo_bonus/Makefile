@@ -10,11 +10,13 @@ OBJDIR		= ./obj
 INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
+	./srcs/doctor.c\
 	./srcs/main_proc/exit.c\
 	./srcs/main_proc/fork_proc.c\
 	./srcs/main_proc/main.c\
 	./srcs/main_proc/philo_init.c\
 	./srcs/main_proc/sem_init.c\
+	./srcs/philosopher.c\
 
 LIBSRCS	=\
 	./libph/count_digits.c\

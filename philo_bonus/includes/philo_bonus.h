@@ -24,36 +24,28 @@ typedef struct timeval	t_time;
 typedef void			*(*t_func)(void *);
 typedef struct s_phi
 {
-	sem_t	*forks1;
-	sem_t	*forks2;
-	sem_t	*outer;
-	sem_t	*inner;//
-	sem_t	*stop;//
-	sem_t	*restart;//
-	sem_t	*musteat;
-	pid_t	*pid;
-	int64_t	num_of_phi;
-	int64_t	deadline;
-	int64_t	eat;
-	int64_t	sleep;
-	int64_t	eatmax;
-	int64_t	dead;
-	int64_t	think_time;
-	int64_t	enough;
-	int32_t	width;
-	int32_t	end;
-	char	*format[5];
+	sem_t		*forks1;
+	sem_t		*forks2;
+	sem_t		*outer;
+	sem_t		*inner;//
+	sem_t		*stop;//
+	sem_t		*restart;//
+	sem_t		*musteat;
+	pid_t		*pid;
+	pthread_t	thp;
+	pthread_t	thd;
+	int64_t		num_of_phi;
+	int64_t		deadline;
+	int64_t		eat;
+	int64_t		sleep;
+	int64_t		eatmax;
+	int64_t		dead;
+	int64_t		think_time;
+	int64_t		enough;
+	int32_t		width;
+	int32_t		end;
+	char		*format[5];
 }t_phi;
-typedef struct s_data
-{
-	t_phi			*phi;
-	pthread_t		thd;
-	pthread_t		thp;
-	int64_t			num;
-	int64_t			start;
-	int64_t			now;
-	int64_t			eatcount;
-}t_data;
 typedef struct s_print
 {
 	t_data	*data;
@@ -68,6 +60,10 @@ enum	e_status
 	DIE
 };
 
+void	*doctor(void *arg);
+int64_t	over_deadline(t_data *data);
+int64_t	check_deadline(t_data *data);
+int64_t	died_notice(t_data *data);
 void	exit_philo(t_phi *philo);
 void	err_exit(t_phi *philo, char *message);
 size_t	ft_strlen(const char *str);
@@ -76,12 +72,18 @@ void	wait_process(t_phi *philo);
 void	wait_for_no_option(t_phi *philo);
 void	wait_for_must_eat(t_phi *philo);
 void	sem_wait_n_times(int64_t n, sem_t *sem);
-int		philosopher(t_phi *philo);
-void	*waiter(void *arg);
+int		philo_manager(t_phi *philo);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_phi *philo);
 int		ft_sem_init(t_phi *philo);
 void	sem_end(sem_t *sem, char *name);
+void	philo_manager(t_phi *philo);
+int		create_threads(t_phi *philo);
+t_func	select_simulation(t_phi *philo);
+void	notice_die_or_eat_enough(t_phi *philo);
+void	*philosopher(void *arg);
+void	*phisolopher(void *arg);
+void	free_exit(t_phi *philo, int status);
 
 #endif

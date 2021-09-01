@@ -2,7 +2,6 @@
 
 void	new_process(t_phi *philo)
 {
-	int		ret;
 	int64_t	i;
 
 	i = 0;
@@ -13,10 +12,8 @@ void	new_process(t_phi *philo)
 			err_exit(philo, "fork failed");
 		else if (!philo->pid[i])
 		{
-			ret = philosopher(philo);
-			free(philo->pid);
-			free(philo);
-			exit(ret);
+			philo_manager(philo);
+			free_exit(philo, 0);
 		}
 		i++;
 	}
@@ -84,18 +81,7 @@ void	sem_wait_n_times(int64_t n, sem_t *sem)
 	}
 }
 
-int	philosopher(t_phi *philo)
+int	philo_manager(t_phi *philo)
 {
 	
-}
-
-void	*waiter(void *arg)
-{
-	t_phi *philo;
-
-	philo = arg;
-	sem_wait(philo->stop);
-	philo->end = 1;
-	sem_post(philo->restart);
-	return (NULL);
 }
