@@ -21,7 +21,7 @@ void	delay_if_even(t_data *data)
 		usleep(1000);
 }
 
-void	*solo(void *arg)
+void	*phisolopher(void *arg)
 {
 	take_a_fork(arg);
 	return (arg);

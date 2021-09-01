@@ -31,7 +31,7 @@ void	mtx_init_philo(t_phi *philo)
 
 t_func	select_simulation(t_phi *philo)
 {
-	return ((t_func[2]){philosopher, solo}[philo->num_of_phi == 1]);
+	return ((t_func[2]){philosopher, phisolopher}[philo->num_of_phi == 1]);
 }
 
 void	data_init(t_data *data, int64_t idx, t_phi *philo)
