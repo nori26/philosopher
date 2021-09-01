@@ -19,11 +19,6 @@ int	create_threads(t_data *data, t_phi *philo)
 	return (0);
 }
 
-t_func	select_simulation(t_phi *philo)
-{
-	return ((t_func[2]){philosopher, phisolopher}[philo->num_of_phi == 1]);
-}
-
 void	mtx_init_philo(t_phi *philo)
 {
 	int64_t	i;
