@@ -64,6 +64,7 @@ enum	e_status
 };
 
 int64_t	continue_simulation(t_phi *philo);
+int64_t	continue_inner(t_phi *philo);
 int64_t	continue_check(t_phi *philo);
 void	*doctor(void *arg);
 int64_t	over_deadline(t_phi *philo);
