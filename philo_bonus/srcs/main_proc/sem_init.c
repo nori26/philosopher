@@ -2,9 +2,9 @@
 
 void	ft_sem_init(t_phi *philo)
 {
-	unsigned	*value;
-	sem_t		***sems;
-	char		**name;
+	sem_t			***sems;
+	char			**name;
+	unsigned int	*value;
 
 	sems = (sem_t **[]){&philo->forks1, &philo->forks2, &philo->outer,
 		&philo->inner, &philo->stop, &philo->restart,
@@ -16,7 +16,7 @@ void	ft_sem_init(t_phi *philo)
 	sems_open(philo, sems, name, value);
 }
 
-void	sems_open(t_phi *philo, sem_t ***sems, char **name, unsigned *value)
+void	sems_open(t_phi *philo, sem_t ***sems, char **name, uint32_t *value)
 {
 	int	i;
 

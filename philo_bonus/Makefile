@@ -14,10 +14,13 @@ SRCS	=\
 	./srcs/doctor.c\
 	./srcs/eat.c\
 	./srcs/main_proc/exit.c\
-	./srcs/main_proc/fork_proc.c\
+	./srcs/main_proc/flag_handler.c\
+	./srcs/main_proc/flag_handler_funcp.c\
 	./srcs/main_proc/main.c\
 	./srcs/main_proc/philo_init.c\
+	./srcs/main_proc/procces.c\
 	./srcs/main_proc/sem_init.c\
+	./srcs/main_proc/wait_proc.c\
 	./srcs/philosopher.c\
 	./srcs/philo_manager.c\
 	./srcs/print_actions.c\
@@ -30,6 +33,7 @@ LIBSRCS	=\
 	./libph/ft_strlen.c\
 	./libph/get_msec.c\
 	./libph/get_usec.c\
+	./libph/philo_iterator.c\
 	./libph/sem_do_func.c\
 
 B_SRCS	=\

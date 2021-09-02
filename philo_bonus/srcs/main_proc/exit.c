@@ -2,8 +2,6 @@
 
 void	exit_philo(t_phi *philo)
 {
-	if (philo)
-		free(philo->pid);
 	free(philo);
 }
 

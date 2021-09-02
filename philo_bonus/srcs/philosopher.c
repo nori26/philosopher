@@ -2,7 +2,6 @@
 
 void	*philosopher(void *arg)
 {
-	// delay_if_even(arg);
 	while (continue_simulation(arg))
 	{
 		get_forks(arg);

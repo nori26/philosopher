@@ -36,9 +36,9 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 int	philo_utils_init(t_phi *philo)
 {
 	ft_sem_init(philo);
-	philo->pid = malloc(sizeof(pid_t) * philo->num_of_phi);
-	if (!philo->pid)
-		err_exit(philo, "malloc failed\n");
+	// philo->pid = malloc(sizeof(pid_t) * philo->num_of_phi);
+	// if (!philo->pid)
+	// 	err_exit(philo, "malloc failed\n");
 	philo->width = count_digits(philo->num_of_phi);
 	philo->think_time = (int64_t [2]){0, philo->eat}[philo->num_of_phi % 2];
 	return (0);
