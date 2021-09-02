@@ -2,21 +2,26 @@
 
 int64_t	continue_simulation(t_phi *philo)
 {
-	return (sem_do_func(philo, &philo->outer, alive_and_hungry));
+	return (sem_do_func(philo, philo->outer, continue_check));
 }
 
-int64_t	alive_and_hungry(t_phi *philo)
+int64_t	continue_check(t_phi *philo)
 {
-	return (is_alive(philo) && is_hungry(philo));
+	return (!philo->end);
 }
 
-int64_t	is_hungry(t_phi *philo)
-{
-	return (philo->musteat == -1
-		|| philo->enough != philo->num_of_phi);
-}
+// int64_t	alive_and_hungry(t_phi *philo)
+// {
+// 	return (is_alive(philo) && is_hungry(philo));
+// }
 
-int64_t	is_alive(t_phi *philo)
-{
-	return (!philo->dead);
-}
+// int64_t	is_hungry(t_phi *philo)
+// {
+// 	return (philo->musteat == -1
+// 		|| philo->enough != philo->num_of_phi);
+// }
+
+// int64_t	is_alive(t_phi *philo)
+// {
+// 	return (!philo->dead);
+// }

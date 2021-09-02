@@ -17,7 +17,7 @@ void	*doctor(void *arg)
 
 int64_t	over_deadline(t_phi *philo)
 {
-	return (sem_do_func(philo, &philo->outer, check_deadline));
+	return (sem_do_func(philo, philo->outer, check_deadline));
 }
 
 int64_t	check_deadline(t_phi *philo)
@@ -32,7 +32,18 @@ int64_t	check_deadline(t_phi *philo)
 
 int64_t	died_notice(t_phi *philo)
 {
-	print(&(t_print){philo, DIE});
-	philo->dead = 1;
+	inner_lock(&(t_print){philo, DIE});
+	post_all_endready(philo);
+	sem_wait(philo->died);
 	return (0);
+}
+
+void	post_all_endready(t_phi *philo)
+{
+	philo_iterator(philo, philo->num_of_phi, post_endready);
+}
+
+void	post_endready(t_phi *philo)
+{
+	sem_post(philo->end_ready);
 }

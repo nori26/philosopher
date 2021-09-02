@@ -7,7 +7,7 @@ void	philo_manager(t_phi *philo)
 	wait_threads(philo);
 }
 
-int	create_threads(t_phi *philo)
+void	create_threads(t_phi *philo)
 {
 	t_func	run_simulation;
 
@@ -15,7 +15,6 @@ int	create_threads(t_phi *philo)
 	if (pthread_create(&philo->thp, NULL, run_simulation, &philo)
 		|| pthread_create(&philo->thd, NULL, doctor, &philo))
 		free_exit(philo, 1);
-	return (0);
 }
 
 t_func	select_simulation(t_phi *philo)

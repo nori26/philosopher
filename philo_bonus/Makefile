@@ -3,7 +3,7 @@ SHELL		= /bin/bash
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -MMD -MP
 SRCDIR		= ./srcs
-SRCSUBDIR	= ./srcs/main_thread
+SRCSUBDIR	= ./srcs/main_proc
 LIBDIR		= ./libph
 B_SRCDIR	= ./srcs_bonus
 OBJDIR		= ./obj
@@ -30,7 +30,6 @@ LIBSRCS	=\
 	./libph/ft_strlen.c\
 	./libph/get_msec.c\
 	./libph/get_usec.c\
-	./libph/mymsleep.c\
 	./libph/sem_do_func.c\
 
 B_SRCS	=\

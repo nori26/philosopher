@@ -2,6 +2,7 @@
 
 void	new_process(t_phi *philo)
 {
+	// pid_t	pid;
 	int64_t	i;
 
 	i = 0;
@@ -26,58 +27,72 @@ void	wait_process(t_phi *philo)
 	int		status;
 	pid_t	pid;
 
-	wait_for_must_eat(philo);
-	if (philo->musteat == -1)
-		wait_for_no_option(philo);
-	else
-		wait_for_must_eat(philo);
-	pid = wait(&status);
-	if (pid == -1)
-		err_exit(philo, "wait failed");
-	if (WIFEXITED(status))
+	i = 0;
+	while (i < philo->num_of_phi)
 	{
-		if (WEXITSTATUS(status))
-			err_exit(philo, "");
-		i = 0;
-		while (i < philo->num_of_phi)
+		pid = wait(&status);
+		if (pid == -1)
+			err_exit(philo, "wait failed");
+		if (WIFEXITED(status))
 		{
-			if (philo->pid[i] != pid)
-			{
-				if (kill(philo->pid[i], SIGINT))
-					err_exit(philo, "kill failed");
-				if (waitpid(philo->pid[i], NULL, 0) == -1)
-					err_exit(philo, "wait failed");
-			}
-			i++;
+			if (WEXITSTATUS(status))
+				err_exit(philo, "child error");
 		}
+		else
+			err_exit(philo, "unknown error");
+		i++;
 	}
-	else
-		err_exit(philo, "unknown error");
-}
-void wait_for_no_option(t_phi *philo)
-{
-
 }
 
-void wait_for_must_eat(t_phi *philo)
+void end_flag_handler(t_phi *philo)
 {
-	pid_t	pid;
-	int		status;
-
-	sem_wait_n_times(philo->num_of_phi, philo->musteat);
-	sem_post(philo->stop);
-	sem_wait_n_times(philo->num_of_phi, philo->restart);
+	wait_die_or_musteat(philo);
+	post_all_flags(philo);
+	wait_to_set_all_flags(philo);
 	sem_post(philo->inner);
+	sem_post(philo->died);
 }
 
-void	sem_wait_n_times(int64_t n, sem_t *sem)
+void	wait_die_or_musteat(t_phi *philo)
+{
+	philo_iterator(philo, philo->num_of_phi - 1, wait_and_post);
+	sem_wait(philo->end_ready);
+}
+
+void	wait_to_set_all_flags(t_phi *philo)
+{
+	philo_iterator(philo, philo->num_of_phi, wait_restart);
+}
+
+void	post_all_flags(t_phi *philo)
+{
+	philo_iterator(philo, philo->num_of_phi, post_stop);
+}
+
+void	philo_iterator(t_phi *philo, int64_t n, void (*func)())
 {
 	int64_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		sem_wait(sem);
+		func(philo);
 		i++;
 	}
+}
+
+void	wait_and_post(t_phi *philo)
+{
+	sem_wait(philo->end_ready);
+	sem_post(philo->inner);
+}
+
+void	wait_restart(t_phi *philo)
+{
+	sem_wait(philo->restart);
+}
+
+void	post_stop(t_phi *philo)
+{
+	sem_post(philo->stop);
 }
