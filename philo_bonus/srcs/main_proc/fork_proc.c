@@ -1,6 +1,6 @@
 #include "philo_bonus.h"
 
-void	new_process(t_phi *philo)
+void	start_simulation(t_phi *philo)
 {
 	// pid_t	pid;
 	int64_t	i;
@@ -9,6 +9,7 @@ void	new_process(t_phi *philo)
 	while (i < philo->num_of_phi)
 	{
 		philo->num = i + 1;
+		philo->start = get_msec();
 		philo->pid[i] = fork();
 		if (philo->pid[i] == -1)
 			err_exit(philo, "fork failed");
@@ -46,6 +47,8 @@ void	wait_process(t_phi *philo)
 
 void end_flag_handler(t_phi *philo)
 {
+	if (philo->num_of_phi <= 0)
+		return ;
 	wait_die_or_musteat(philo);
 	post_all_flags(philo);
 	wait_to_set_all_flags(philo);

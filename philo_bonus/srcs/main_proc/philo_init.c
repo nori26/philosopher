@@ -23,7 +23,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| ft_atol_err(argv[3], &philo->eat)
 		|| ft_atol_err(argv[4], &philo->sleep)
 		|| (argc == 6 && ft_atol_err(argv[5], &philo->musteat))
-		|| philo->num_of_phi <= 0
+		|| philo->num_of_phi < 0
 		|| philo->num_of_phi > INT_MAX
 		|| philo->deadline < 0
 		|| philo->eat < 0
@@ -35,12 +35,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 
 int	philo_utils_init(t_phi *philo)
 {
-	if (ft_sem_init(philo))
-	{
-		write(2, "semfailed\n", 10);
-		free(philo);
-		exit(1);
-	}
+	ft_sem_init(philo);
 	philo->pid = malloc(sizeof(pid_t) * philo->num_of_phi);
 	if (!philo->pid)
 		err_exit(philo, "malloc failed\n");

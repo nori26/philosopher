@@ -9,6 +9,7 @@ int	main(int argc, char **argv)
 	philo_init(&philo);
 	validate_args(argc, argv, philo);
 	philo_utils_init(philo);
+	start_simulation(philo);
 	end_flag_handler(philo);
 	wait_process(philo);
 }

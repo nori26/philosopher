@@ -12,8 +12,8 @@ void	create_threads(t_phi *philo)
 	t_func	run_simulation;
 
 	run_simulation = select_simulation(philo);
-	if (pthread_create(&philo->thp, NULL, run_simulation, &philo)
-		|| pthread_create(&philo->thd, NULL, doctor, &philo))
+	if (pthread_create(&philo->thp, NULL, run_simulation, philo)
+		|| pthread_create(&philo->thd, NULL, doctor, philo))
 		free_exit(philo, 1);
 }
 
