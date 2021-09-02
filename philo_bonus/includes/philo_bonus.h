@@ -65,12 +65,12 @@ enum	e_status
 int64_t	continue_simulation(t_phi *philo);
 int64_t	continue_inner(t_phi *philo);
 int64_t	continue_check(t_phi *philo);
-void	*doctor(void *arg);
 int64_t	over_deadline(t_phi *philo);
 int64_t	check_deadline(t_phi *philo);
 int64_t	died_notice(t_phi *philo);
 void	post_all_endready(t_phi *philo);
 void	post_endready(t_phi *philo);
+void	*doctor(void *arg);
 void	eating(t_phi *philo);
 int64_t	store_start_time(t_phi *philo);
 void	inc_eatcount(t_phi *philo);

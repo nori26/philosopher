@@ -11,6 +11,7 @@ INCLUDE		= ./includes
 VPATH		= $(SRCDIR):$(SRCSUBDIR):$(LIBDIR):$(B_SRCDIR)
 SRCS	=\
 	./srcs/continue_check.c\
+	./srcs/die_check.c\
 	./srcs/doctor.c\
 	./srcs/eat.c\
 	./srcs/main_proc/exit.c\
