@@ -82,8 +82,11 @@ add		:
 	bash make.sh "$(LIBDIR)" LIBSRCS
 # bash make.sh "$(B_SRCDIR)" B_SRCS
 
+head	:
+	find `pwd` -type f -name "*.c" -o -type f -name "*.h" | xargs python3 ~/42header.py
+
 norm	:
 	@norminette | grep -v ': OK!' || \
 	printf '\x1b[1m\x1b[32m%s\x1b[39m\x1b[0m\n' 'Norm: OK!';
 
-.PHONY	: all clean fclean re bonus add norm rm_exec rm_reloc b_clean b_fclean
+.PHONY	: all clean fclean re bonus add norm rm_exec rm_reloc b_clean b_fclean head
