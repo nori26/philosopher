@@ -75,7 +75,6 @@ void	eating(t_phi *philo);
 int64_t	store_start_time(t_phi *philo);
 void	inc_eatcount(t_phi *philo);
 int64_t	inc_eatcount_func(t_phi *philo);
-void	exit_philo(t_phi *philo);
 void	err_exit(t_phi *philo, char *message);
 void	free_exit(t_phi *philo, int status);
 void	end_flag_handler(t_phi *philo);

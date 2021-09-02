@@ -20,7 +20,6 @@ SRCS	=\
 	./srcs/main_proc/philo_init.c\
 	./srcs/main_proc/procces.c\
 	./srcs/main_proc/sem_init.c\
-	./srcs/main_proc/wait_proc.c\
 	./srcs/philosopher.c\
 	./srcs/philo_manager.c\
 	./srcs/print_actions.c\

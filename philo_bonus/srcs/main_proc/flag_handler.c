@@ -2,8 +2,6 @@
 
 void	end_flag_handler(t_phi *philo)
 {
-	if (philo->num_of_phi <= 0)
-		return ;
 	wait_die_or_musteat(philo);
 	post_all_flags(philo);
 	wait_to_set_all_flags(philo);

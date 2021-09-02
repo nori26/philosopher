@@ -12,4 +12,5 @@ int	main(int argc, char **argv)
 	start_simulation(philo);
 	end_flag_handler(philo);
 	wait_process(philo);
+	free(philo);
 }
