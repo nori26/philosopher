@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 10:57:29 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int64_t	continue_simulation(t_phi *philo)
 
 int64_t	continue_inner(t_phi *philo)
 {
+	printf("%lld in out lock\n", philo->num);
 	return (sem_do_func(philo, philo->inner, continue_check));
 }
 
 int64_t	continue_check(t_phi *philo)
 {
+	printf("%lld in out lock\n", philo->num);
 	return (!philo->end);
 }
