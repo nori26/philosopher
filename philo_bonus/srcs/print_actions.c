@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 10:37:00 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 10:38:35 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int64_t	inner_lock(t_print *p)
 {
 	// return (sem_do_func(p, p->philo->inner, print));
 	return (sem_do_func(p, p->philo->inner, print) | (p->action == EAT ? !printf("%lld back print\n", p->philo->num) : 0));
+}
 
 int64_t	print(t_print *p)
 {
