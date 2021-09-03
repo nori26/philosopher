@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 13:28:58 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 13:29:59 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int64_t	over_deadline(t_data *data)
 
 int64_t	check_deadline(t_data *data)
 {
-	// if (data->phi->deadline < data->now - data->start)
-	if (data->start < data->now - data->phi->deadline)
+	if (data->phi->deadline < data->now - data->start)
 	{
 		died_notice(data);
 		return (1);

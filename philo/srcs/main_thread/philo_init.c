@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 14:04:11 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->deadline < 0
 		|| philo->eat < 0
 		|| philo->sleep < 0
+		|| philo->eat > LLONG_MAX / 1000
+		|| philo->sleep > LLONG_MAX / 1000
 		|| (argc == 6 && philo->eatmax < 0))
 		return (1);
 	return (0);
