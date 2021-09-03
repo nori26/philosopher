@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 13:13:54 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ void	end_flag_handler(t_phi *philo);
 void	wait_die_or_musteat(t_phi *philo);
 void	post_all_flags(t_phi *philo);
 void	wait_to_set_all_flags(t_phi *philo);
+void	unlock_all_dead(t_phi *philo);
 void	wait_ready_post_inner(t_phi *philo);
 void	wait_restart(t_phi *philo);
 void	post_stop(t_phi *philo);
+void	post_died(t_phi *philo);
 int32_t	philo_init(t_phi **philo);
 int32_t	validate_args(int argc, char **argv, t_phi *philo);
 int		philo_utils_init(t_phi *philo);
