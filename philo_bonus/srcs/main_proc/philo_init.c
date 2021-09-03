@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 13:19:16 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int32_t	validate_args(int argc, char **argv, t_phi *philo)
 		|| philo->sleep < 0
 		|| (argc == 6 && philo->musteat < 0))
 		err_exit(philo, "invalid argument\n");
-	if (!philo->num_of_phi)
+	if (!philo->num_of_phi || !philo->musteat)
 		free_exit(philo, 0);
 	return (0);
 }
