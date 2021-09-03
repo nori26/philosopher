@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 10:30:30 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	eating(t_phi *philo)
 {
 	actions(philo, EAT, philo->eat);
 	inc_eatcount(philo);
+	printf("%lld is eated\n", philo->num);
 }
 
 int64_t	store_start_time(t_phi *philo)
