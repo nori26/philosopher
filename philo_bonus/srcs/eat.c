@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 11:10:45 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:58:38 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	inc_eatcount(t_phi *philo)
 
 int64_t	inc_eatcount_func(t_phi *philo)
 {
-	if (philo->musteat != -1)
-		philo->eatcount++;
 	if (philo->eatcount == philo->musteat)
 	{
 		sem_wait(philo->inner);
 		sem_post(philo->end_ready);
 	}
+	if (philo->musteat != -1)
+		philo->eatcount++;
 	return (0);
 }

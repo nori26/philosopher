@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:58:22 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	inc_eatcount(t_data *data)
 
 int64_t	inc_eatcount_func(t_data *data)
 {
+	data->phi->enough += data->eatcount == data->phi->eatmax;
 	if (data->phi->eatmax != -1)
 		data->eatcount++;
-	data->phi->enough += data->eatcount == data->phi->eatmax;
 	return (0);
 }
