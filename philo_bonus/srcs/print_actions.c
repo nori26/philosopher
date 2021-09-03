@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 10:38:35 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 10:42:43 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	actions(t_phi *philo, int action, int64_t sleeptime)
 	if (print_status(&(t_print){philo, action}) | (action == EAT ? !printf("%lld back outer\n", philo->num) : 0))
 		return ;
 	mymsleep(sleeptime, philo);
+	printf("%lld is eated\n", philo->num);
 }
 
 int64_t	print_status(t_print *p)
