@@ -89,7 +89,7 @@ add		:
 #bash make.sh "$(B_SRCDIR)" B_SRCS
 
 head	:
-	find `pwd` -type f -name "*.c" -o -type f -name "*.h" | xargs python3 ~/42header.py
+	find `pwd` -type f -name "*.c" -o -type f -name "*.h" | xargs python3 ~/42header/42header.py
 
 norm	:
 	@norminette | grep -v ': OK!' || \
