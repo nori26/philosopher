@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 13:14:38 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 15:27:49 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,4 @@ void	post_all_flags(t_phi *philo)
 void	wait_to_set_all_flags(t_phi *philo)
 {
 	philo_iterator(philo, philo->num_of_phi, wait_restart);
-}
-
-void	unlock_all_dead(t_phi *philo)
-{
-	philo_iterator(philo, philo->num_of_phi, post_died);
 }

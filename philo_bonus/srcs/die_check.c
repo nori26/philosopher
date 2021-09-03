@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 11:52:38 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 15:28:09 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int64_t	died_notice(t_phi *philo)
 	inner_lock(&(t_print){philo, DIE});
 	post_all_endready(philo);
 	sem_wait(philo->died);
+	sem_post(philo->died);
 	return (0);
 }
 
