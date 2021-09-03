@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 10:44:15 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:09:52 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int64_t	store_start_time(t_phi *philo)
 void	inc_eatcount(t_phi *philo)
 {
 	sem_do_func(philo, philo->outer, inc_eatcount_func);
-}
+	printf("%lld outer unlock\n", philo->num);
 
 int64_t	inc_eatcount_func(t_phi *philo)
 {
