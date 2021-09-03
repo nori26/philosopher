@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:34:44 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:34:44 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 09:59:08 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	get_forks(t_phi *philo)
 void	release_forks(t_phi *philo)
 {
 	sem_post(philo->forks1);
+	printf("%lld is release\n", philo->num);
 	sem_post(philo->forks2);
+	printf("%lld is release\n", philo->num);
 }
 
 void	take_a_fork(t_phi *philo)
