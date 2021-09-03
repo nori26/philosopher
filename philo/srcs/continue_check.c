@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 12:27:46 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int64_t	alive_and_hungry(t_data *data)
 int64_t	is_hungry(t_data *data)
 {
 	return (data->phi->eatmax == -1
-		|| data->phi->enough != data->phi->num_of_phi);
+		|| (data->phi->eatmax && data->phi->enough != data->phi->num_of_phi));
 }
 
 int64_t	is_alive(t_data *data)
