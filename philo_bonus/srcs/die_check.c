@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 00:01:27 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/03 11:52:14 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	post_all_endready(t_phi *philo)
 
 void	post_endready(t_phi *philo)
 {
+	sem_post(philo->inner);
 	sem_post(philo->end_ready);
 }
