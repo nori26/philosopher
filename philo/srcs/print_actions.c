@@ -6,7 +6,7 @@
 /*   By: nosuzuki <nosuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 00:01:27 by nosuzuki          #+#    #+#             */
-/*   Updated: 2021/09/03 13:32:17 by nosuzuki         ###   ########.fr       */
+/*   Updated: 2021/09/06 11:31:28 by nosuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	mymsleep(int64_t msec, t_data *data)
 		return ;
 	start = get_usec();
 	sleeptime = msec * 1000;
-	printf("%ld\n", sleeptime);
 	while (get_usec() - start < sleeptime - 1000 && continue_simulation(data))
 		usleep(1000);
 	sleeptime = start + sleeptime - get_usec();
